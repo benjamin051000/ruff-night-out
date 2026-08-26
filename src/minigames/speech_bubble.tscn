@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://pl5mdsgdp4c4"]
+
+[ext_resource type="Script" uid="uid://bmt8l3f6xyqy3" path="res://src/minigames/speech_bubble.gd" id="1_2fkwg"]
+
+[node name="SpeechBubble" type="Node2D" unique_id=441492960]
+script = ExtResource("1_2fkwg")

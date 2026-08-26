@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://861o3nvyxcr7"]
+
+[ext_resource type="Script" uid="uid://dap5gqjpnfjvt" path="res://src/core/main.gd" id="1_avv2o"]
+[ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_ivtyw"]
+[ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="3_x62ka"]
+
+[node name="Main" type="Node2D" unique_id=1930110823]
+script = ExtResource("1_avv2o")
+
+[node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
+position = Vector2(221, 365)
+
+[node name="Guest" parent="." unique_id=159835390 instance=ExtResource("3_x62ka")]
+position = Vector2(697, 362)
+
+[node name="Button" type="Button" parent="." unique_id=781993982]
+offset_left = 158.0
+offset_top = 512.0
+offset_right = 307.0
+offset_bottom = 614.0
+text = "Let in"
+
+[node name="Button2" type="Button" parent="." unique_id=819803084]
+offset_left = 341.0
+offset_top = 510.0
+offset_right = 490.0
+offset_bottom = 612.0
+text = "Reject"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]
