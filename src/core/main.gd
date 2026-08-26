@@ -11,14 +11,14 @@ enum Minigames {PIC_RESPONSE, ID_CHECK}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in 30:
+	for i in 0:
 		var g = Guest.instantiate()
 		# Modify g
 		g.position = Vector2(randi_range(0, 1280), randi_range(0, 720))
 		add_child(g)
 		guests.append(g)
 	
-	bouncer.start_pic_response()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
