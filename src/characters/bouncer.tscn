@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbv6c0hiq7mht" path="res://src/characters/bouncer.gd" id="1_usyie"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="2_dgjfo"]
-[ext_resource type="Texture2D" uid="uid://cpivaro1u3vas" path="res://icon.svg" id="2_nihnh"]
+[ext_resource type="Texture2D" uid="uid://cdxvkpgw1m787" path="res://assets/placeholder_bouncer.png" id="2_nihnh"]
 
 [node name="Bouncer" type="Node2D" unique_id=1387749208]
 script = ExtResource("1_usyie")
@@ -11,10 +11,6 @@ script = ExtResource("1_usyie")
 texture = ExtResource("2_nihnh")
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_dgjfo")]
-
-[node name="Label" type="Label" parent="." unique_id=352649107]
-offset_left = -32.0
-offset_top = -90.0
-offset_right = 33.0
-offset_bottom = -67.0
-text = "Bouncer"
+visible = false
+offset_top = -92.0
+offset_bottom = 11.0
