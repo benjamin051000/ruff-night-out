@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cd0f67f7l6p3e"]
 
 [ext_resource type="Script" uid="uid://cub3q0665kin3" path="res://src/characters/guest.gd" id="1_0lvjc"]
-[ext_resource type="Texture2D" uid="uid://cpivaro1u3vas" path="res://icon.svg" id="2_q4hpw"]
+[ext_resource type="Texture2D" uid="uid://bsdu0u6gcew7v" path="res://assets/placeholder_dogoutline.png" id="2_q4hpw"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="2_rmeho"]
 
 [node name="Guest" type="Node2D" unique_id=159835390]
@@ -11,10 +11,4 @@ script = ExtResource("1_0lvjc")
 texture = ExtResource("2_q4hpw")
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_rmeho")]
-
-[node name="Label" type="Label" parent="." unique_id=1319460068]
-offset_left = -22.0
-offset_top = -91.0
-offset_right = 18.0
-offset_bottom = -68.0
-text = "Guest"
+visible = false
