@@ -9,8 +9,7 @@ var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV",
 var street_names = []
 
 var Guest = preload("res://src/characters/guest.tscn").instantiate()
-@export var dogtype = Guest.DogType
-
+var dogtype = Guest.DogType
 
 func make_address():
 	var streetnum = randi_range(100,999) 
@@ -21,7 +20,10 @@ func make_address():
 func make_expiration(dob):
 	#Randomize dates from 01/01/2030–12/31/2035 
 	# but have the month and the day match the DoB.
-	pass
+	var exp = str(randi_range(2030,2035))
+	var date = dob.left(-4)
+	exp = date + exp
+	return exp
 
 func make_IDnum():
 	const chars = "0123456789"
@@ -32,15 +34,32 @@ func make_IDnum():
 		id_string += chars[randi() % chars.length()]
 		
 	return id_string
+	
+var birthday_year = "20"
 
-func make_age(dogType):
-	if dogType == Guest.DogType.REAL:
-		# Randomize dates from 01/01/2000 to 08/23/2025. 
+func find_year(dogtype):
+	if dogtype == Guest.DogType.REAL:
+		birthday_year = "20" + str(randi_range(17,25))
 		# If real, from past 8 years (2017-2025)
-		pass
 	else:
 		#logic for fake ages, (2000-2016)
-		pass
+		var endyear = randi_range(0,16)
+		if endyear <= 9:
+			endyear = "0"+ str(endyear)
+		else:
+			pass
+		birthday_year = "20" + endyear
+	return birthday_year
+
+func make_age(dogtype):
+	# Randomize dates from 01/01/2000 to 08/23/2025. 
+	var birthday_month = randi_range(1,12)
+	var birthday_day = randi_range(1,28)
+	var combined
+	var birthday_Year = find_year(dogtype)
+	combined = (birthday_month+"/"+birthday_day+"/"+birthday_Year)
+	return combined
+
 
 func make_name(dogtype):
 	if dogtype == Guest.DogType.REAL:
