@@ -11,18 +11,20 @@ enum Minigames {PIC_RESPONSE, ID_CHECK}
 @onready var bouncer: Node2D = $Bouncer
 @onready var door: Node2D = $Door
 
+func move_camera() -> void:
+	var zoom_tween = create_tween()
+	var pan_tween = create_tween()
+	zoom_tween.tween_property($Camera2D, "zoom", Vector2(1, 1), 2)
+	pan_tween.tween_property($Camera2D, "position", Vector2(1920/2, 1080/2), 2)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	door.door_opened.connect(func(): door.close())
-	for i in 0:
-		var g = Guest.instantiate()
-		# Modify g
-		g.position = Vector2(randi_range(0, 1280), randi_range(0, 720))
-		add_child(g)
-		guests.append(g)
-	
+	door.door_opened.connect(func():
+		bouncer.visible = true
+		door.close()
+		move_camera()
+	)
 	door.open()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

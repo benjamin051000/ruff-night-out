@@ -18,6 +18,7 @@ centered = false
 position = Vector2(1505, 401)
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
+visible = false
 position = Vector2(1665, 632)
 scale = Vector2(0.5, 0.5)
 
@@ -38,6 +39,10 @@ offset_top = 903.0
 offset_right = 1466.0
 offset_bottom = 1005.0
 text = "Reject"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=319322912]
+position = Vector2(1654, 625)
+zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]
