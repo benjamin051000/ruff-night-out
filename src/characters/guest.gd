@@ -3,91 +3,59 @@ extends Node2D
 enum DogType {REAL, FAKE}
 
 @onready var speech_bubble: MarginContainer = $SpeechBubble
-
 @export var dogtype: DogType
+var real_or_fake
+var rand_minigame
+var dialogue 
 
+const IdCheck = preload("res://src/minigames/id_check.tscn")
+const pic_response = preload("res://src/minigames/pic_response.tscn")
+const speech_bubble_test = preload("res://src/minigames/speech_bubble.tscn")
 
+var idc := IdCheck.instantiate()
+var picresp := pic_response.instantiate()
+var speechtest := speech_bubble_test.instantiate()
 
 func _ready() -> void:
-	if randi_range(0, 1) == 0:
-		dogtype = DogType.REAL
+	dogtype = newguesttype()
+	#need to talk in the speech bubble depending on dogtype
+	dialogue = talk(dogtype)
+	
+	# determine minigame they will play
+	rand_minigame = randi_range(1,3)
+	if rand_minigame == 1:
+		idc.start_idcheck_minigame(dogtype)
+	elif rand_minigame == 2:
+		picresp.start(dogtype) #placeholder function
 	else:
-		dogtype = DogType.FAKE
+		speechtest.start(dogtype) #placeholder function
+	
+	# need to decide what all is called for each new guest walking up
+	
+	# need variable for bouncers guess, need to compare to guest.dogtype
+		# would this go in main?
+	
+	# guest action response based on going in door vs turned away
+	
+	
 
-func talk(_prompt: String): 
+func newguesttype():
+		real_or_fake = randi_range(0,9) 
+		if  real_or_fake == range(3,9): # 30% chance of guest being fake
+			dogtype = DogType.REAL
+		else:
+			dogtype = DogType.FAKE
+		return dogtype
+
+func talk(dogType):  #for initial greeting to bouncer
 	const real_speech = ["I am real dog.","RealDog greeting 2", 
 		"RealDog greeting 3", "RealDog greeting 4", "RealDog greeting 5"]
 	const fake_speech = ["I hate pets!","NotDog greeting 2",
 		"NotDog greeting 3","NotDog greeting 4", "NotDog greeting 5"]
-		
-	if dogtype == DogType.REAL:
-		speech_bubble.display_text(real_speech[(randi_range(0,4))])
-	else:
-		speech_bubble.display_text(fake_speech[(randi_range(0,4))])
-		
-var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy", 
-	"Teddy", "Willa", "Otso", "Osho", "Tenor", "Bernie", "Cassie"]
-var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV", 
-	"King Barkthur of Wagsalot", "Lady Sheila Sniffums", "Barry Borkbottom", 
-	"Woofred Diggysworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
-	"Barkley Wellington", "Trust Me, I'm A Dog"]
-
-var id_check := preload("res://src/minigames/id_check.tscn")
-var idc := id_check.instantiate()
-
-func make_address():
-	#Randomize numbers from #1–999 
-	# pick a street name from a list (list needed)
-	pass
-
-func make_expiration(dob):
-	#Randomize dates from 01/01/2030–12/31/2035 
-	# but have the month and the day match the DoB.
-	pass
-
-func make_ID():
-	# Randomize 9 digits
-	pass
-
-func make_age(dogType):
+		# if we change the amount of greeting options, 
+		# need to change the ranges below as well
 	if dogType == DogType.REAL:
-		#Randomize dates from 01/01/2000 to 08/23/2025. 
-		# If real, from past 8 years (2017-2025)
-		pass
+		return speech_bubble.display_text(real_speech[(randi_range(0,4))])
 	else:
-		#logic for fake ages, (2000-2016)
-		pass
-
-func make_name(dogtype):
-	if dogtype == DogType.REAL:
-		real_dog_names.shuffle()
-		idc.Name.text = real_dog_names.pop_back()
+		return speech_bubble.display_text(fake_speech[(randi_range(0,4))])
 		
-	else:
-		fake_dog_names.shuffle()
-		idc.Name.text = fake_dog_names.pop_back()
-		"res://assets/placeholder_real_pawprint.png"
-
-const PLACEHOLDER_REAL_PAWPRINT = preload("uid://dlxv2ryy4auyl")
-const PLACEHOLDER_FAKE_PAWPRINT = preload("uid://wqh44j6ocm3j")
-								
-func make_pawprint(dogtype):
-	if dogtype == DogType.REAL:
-		idc.Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
-		
-	else:
-		idc.Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
-
-func start_id_check_minigame():
-	idc.Dogtype
-	idc.Name.text = make_name(dogtype)
-	idc.DoB.text = make_age(dogtype)
-	idc.Address.text = make_address()
-	idc.Expires.text = make_expiration(idc.DoB.text)
-	idc.IDnum.text = make_ID()
-	idc.Pawprint.Texture = make_pawprint(dogtype)
-	
-	add_child(idc)
-	
-func check_minigame_over():
-	idc.queue_free()

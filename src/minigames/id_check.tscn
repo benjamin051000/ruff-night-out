@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cp8ahl3obc3ay"]
 
 [ext_resource type="Texture2D" uid="uid://huxoag0sas6w" path="res://assets/placeholder_licence.png" id="1_osh8r"]
+[ext_resource type="Script" uid="uid://b6eqbq2nb0g1w" path="res://src/minigames/id_check.gd" id="1_tnl2e"]
 
 [node name="IdCheck" type="Node2D" unique_id=315101865]
+script = ExtResource("1_tnl2e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1859393844]
 position = Vector2(-3.8146973e-06, 0)
