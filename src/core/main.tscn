@@ -40,7 +40,16 @@ offset_right = 1466.0
 offset_bottom = 1005.0
 text = "Reject"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=319322912]
+[node name="DoorCamera" type="Camera2D" parent="." unique_id=319322912]
+position = Vector2(1654, 625)
+enabled = false
+zoom = Vector2(2, 2)
+
+[node name="FullCamera" type="Camera2D" parent="." unique_id=1210795886]
+position = Vector2(960, 540)
+enabled = false
+
+[node name="ActualCamera" type="Camera2D" parent="." unique_id=1044387270]
 position = Vector2(1654, 625)
 zoom = Vector2(2, 2)
 
