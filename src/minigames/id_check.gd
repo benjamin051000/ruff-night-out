@@ -6,24 +6,25 @@ var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV",
 	"King Barkthur of Wagsalot", "Lady Sheila Sniffums", "Barry Borkbottom", 
 	"Woofred Diggysworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
 	"Barkley Wellington", "Trust Me, I'm A Dog"]
-var street_names = []
-
-var Guest = preload("res://src/characters/guest.tscn").instantiate()
-var dogtype = Guest.DogType
+var street_names = ["Placeholder1","Placeholder2","Placeholder3","Placeholder4",
+		"Placeholder5","Placeholder6","Placeholder7","Placeholder8",
+		"Placeholder9","Placeholder10"]
+var Guest 
+var dogtype
 
 func make_address():
-	var streetnum = randi_range(100,999) 
-	var streetname = street_names[(randi_range(0,10))]
+	var streetnum = str(randi_range(100,999)) 
+	var streetname = street_names[(randi_range(0,9))]
 	var address = streetnum + " " + streetname
 	return address
 	
 func make_expiration(dob):
 	#Randomize dates from 01/01/2030–12/31/2035 
 	# but have the month and the day match the DoB.
-	var exp = str(randi_range(2030,2035))
+	var expir = str(randi_range(2030,2035))
 	var date = dob.left(-4)
-	exp = date + exp
-	return exp
+	expir = date + expir
+	return expir
 
 func make_IDnum():
 	const chars = "0123456789"
@@ -53,41 +54,47 @@ func find_year(dogtype):
 
 func make_age(dogtype):
 	# Randomize dates from 01/01/2000 to 08/23/2025. 
-	var birthday_month = randi_range(1,12)
-	var birthday_day = randi_range(1,28)
+	var birthday_month = str(randi_range(1,12))
+	var birthday_day = str(randi_range(1,28))
 	var combined
 	var birthday_Year = find_year(dogtype)
 	combined = (birthday_month+"/"+birthday_day+"/"+birthday_Year)
 	return combined
 
-
 func make_name(dogtype):
+	var name
 	if dogtype == Guest.DogType.REAL:
 		real_dog_names.shuffle()
-		$Name.text = real_dog_names.pop_back()
-		
+		name = real_dog_names.pop_back()
+		return name
 	else:
 		fake_dog_names.shuffle()
-		$Name.text = fake_dog_names.pop_back()
+		name = fake_dog_names.pop_back()
+		return name
 
 const PLACEHOLDER_REAL_PAWPRINT = preload("uid://dlxv2ryy4auyl")
 const PLACEHOLDER_FAKE_PAWPRINT = preload("uid://wqh44j6ocm3j")
 
-func make_pawprint(dogtype):
-	if dogtype == Guest.DogType.REAL:
-		$Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
-	else:
-		$Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
+#func make_pawprint(dogtype):
+	#if dogtype == Guest.DogType.REAL:
+		#$Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
+	#else:
+		#$Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
 		
 func start_id_check_minigame(dogtype):
-	$Dogtype.text = dogtype
+	$Dogtype.text = Guest.DogType.keys()[dogtype]
 	$Name.text = make_name(dogtype)
 	$DoB.text = make_age(dogtype)
 	$Address.text = make_address()
 	$Expires.text = make_expiration($DoB.text)
 	$IDnum.text = make_IDnum()
-	$Pawprint.Texture = make_pawprint(dogtype)
+#	$Pawprint.Texture = make_pawprint(dogtype)
 	
 	
 func check_minigame_over():
 	queue_free()
+	
+func _ready() -> void:
+	Guest = preload("res://src/characters/guest.tscn").instantiate()
+	dogtype = Guest.dogtype
+	

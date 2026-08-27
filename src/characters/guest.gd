@@ -8,41 +8,14 @@ var real_or_fake
 var rand_minigame
 var dialogue 
 
-var idc = preload("res://src/minigames/id_check.tscn").instantiate()
-var picresp = preload("res://src/minigames/pic_response.tscn").instantiate()
-var speechtest = preload("res://src/minigames/speech_bubble.tscn").instantiate()
-
-
-func _ready() -> void:
-	dogtype = newguesttype()
-	#need to talk in the speech bubble depending on dogtype
-	dialogue = talk(dogtype)
-	
-	# determine minigame they will play
-	rand_minigame = randi_range(1,3)
-	if rand_minigame == 1:
-		idc.start_idcheck_minigame(dogtype)
-	elif rand_minigame == 2:
-		picresp.start(dogtype) #placeholder function
-	else:
-		speechtest.start(dogtype) #placeholder function
-	
-	# need to decide what all is called for each new guest walking up
-	
-	# need variable for bouncers guess, need to compare to guest.dogtype
-		# would this go in main?
-	
-	# guest action response based on going in door vs turned away
-	
-	
 
 func newguesttype():
 		real_or_fake = randi_range(0,9) 
-		if  real_or_fake == range(3,9): # 30% chance of guest being fake
+		if  real_or_fake in range(3,9): # 30% chance of guest being fake
 			dogtype = DogType.REAL
 		else:
 			dogtype = DogType.FAKE
-		return dogtype
+
 
 func talk(dogType):  #for initial greeting to bouncer
 	const real_speech = ["I am real dog.","RealDog greeting 2", 
@@ -56,3 +29,26 @@ func talk(dogType):  #for initial greeting to bouncer
 	else:
 		return speech_bubble.display_text(fake_speech[(randi_range(0,4))])
 		
+
+
+func _ready() -> void:
+	newguesttype()
+	#need to talk in the speech bubble depending on dogtype
+	#dialogue = talk(dogtype)
+	#
+	## determine minigame they will play
+	#rand_minigame = randi_range(1,3)
+	#if rand_minigame == 1:
+		#idc.start_idcheck_minigame(dogtype)
+	#elif rand_minigame == 2:
+		#picresp.start(dogtype) #placeholder function
+	#else:
+		#speechtest.start(dogtype) #placeholder function
+	
+	# need to decide what all is called for each new guest walking up
+	
+	# need variable for bouncers guess, need to compare to guest.dogtype
+		# would this go in main?
+	
+	# guest action response based on going in door vs turned away
+	
