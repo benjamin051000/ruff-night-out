@@ -7,10 +7,13 @@ var guests: Array
 var strikes := 3
 
 enum Minigames {PIC_RESPONSE, ID_CHECK}
+
 @onready var bouncer: Node2D = $Bouncer
+@onready var door: Node2D = $Door
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	door.door_opened.connect(func(): door.close())
 	for i in 0:
 		var g = Guest.instantiate()
 		# Modify g
@@ -18,6 +21,7 @@ func _ready() -> void:
 		add_child(g)
 		guests.append(g)
 	
+	door.open()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
