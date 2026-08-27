@@ -1,7 +1,9 @@
 extends Node2D
 
 enum DogType {REAL, FAKE}
-@onready var speech_bubble: Node2D = $SpeechBubble
+
+@onready var speech_bubble: MarginContainer = $SpeechBubble
+
 @export var dogtype: DogType
 
 
