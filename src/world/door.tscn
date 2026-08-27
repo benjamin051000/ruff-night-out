@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://p7vlwpp4nk2e"]
 
+[ext_resource type="Texture2D" uid="uid://cpivaro1u3vas" path="res://icon.svg" id="1_qp2hx"]
+[ext_resource type="Script" uid="uid://bck8q3d6r6r8t" path="res://src/world/door.gd" id="1_w0rgm"]
+
 [node name="Door" type="Node2D" unique_id=1938332207]
+script = ExtResource("1_w0rgm")
+
+[node name="Mask" type="Sprite2D" parent="." unique_id=1839943835]
+clip_children = 1
+position = Vector2(3, 4)
+scale = Vector2(2.5937502, 3.4140627)
+texture = ExtResource("1_qp2hx")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Mask" unique_id=660022653]
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("1_qp2hx")
+centered = false
