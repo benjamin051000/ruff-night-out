@@ -2,58 +2,68 @@
 
 [ext_resource type="Texture2D" uid="uid://huxoag0sas6w" path="res://assets/placeholder_licence.png" id="1_osh8r"]
 [ext_resource type="Script" uid="uid://b6eqbq2nb0g1w" path="res://src/minigames/id_check.gd" id="1_tnl2e"]
+[ext_resource type="Texture2D" uid="uid://dlxv2ryy4auyl" path="res://assets/placeholder_real_pawprint.png" id="3_tsa83"]
 
 [node name="IdCheck" type="Node2D" unique_id=315101865]
+position = Vector2(986, 541)
 script = ExtResource("1_tnl2e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1859393844]
 position = Vector2(-3.8146973e-06, 0)
+scale = Vector2(0.5028299, 0.514232)
 texture = ExtResource("1_osh8r")
+metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="." unique_id=1043591681]
-offset_left = 605.0
-offset_top = -194.0
-offset_right = 1395.0
-offset_bottom = -48.0
+offset_left = 279.0
+offset_top = -125.0
+offset_right = 1069.0
+offset_bottom = 21.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "Mr Woofington"
 
 [node name="Address" type="Label" parent="." unique_id=1811364277]
-offset_left = 819.0
-offset_top = 130.0
-offset_right = 1609.0
-offset_bottom = 276.0
+offset_left = 387.0
+offset_top = 38.0
+offset_right = 1177.0
+offset_bottom = 184.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "1 Bark St"
 
 [node name="DoB" type="Label" parent="." unique_id=1958346582]
-offset_left = -133.0
-offset_top = 672.0
-offset_right = 657.0
-offset_bottom = 818.0
+offset_left = -73.0
+offset_top = 332.0
+offset_right = 717.0
+offset_bottom = 478.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "Jan 1 1970"
 
 [node name="Expires" type="Label" parent="." unique_id=1971501610]
-offset_left = 768.0
-offset_top = 662.0
-offset_right = 1558.0
-offset_bottom = 808.0
+offset_left = 354.0
+offset_top = 336.0
+offset_right = 1144.0
+offset_bottom = 482.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "Jan 1 1970"
 
 [node name="IDnum" type="Label" parent="." unique_id=838176978]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Pawprint" type="Label" parent="." unique_id=1082012754]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 23.0
+offset_top = -231.0
+offset_right = 394.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "123456789
+"
 
 [node name="Dogtype" type="Label" parent="." unique_id=1602821932]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="PlaceholderRealPawprint" type="Sprite2D" parent="." unique_id=1896322340]
+position = Vector2(-442, -139)
+texture = ExtResource("3_tsa83")

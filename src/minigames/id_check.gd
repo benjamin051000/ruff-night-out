@@ -49,7 +49,7 @@ func find_year(dogtype):
 			endyear = "0"+ str(endyear)
 		else:
 			pass
-		birthday_year = "20" + endyear
+		birthday_year = "20" + str(endyear)
 	return birthday_year
 
 func make_age(dogtype):

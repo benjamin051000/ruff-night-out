@@ -10,3 +10,4 @@ script = ExtResource("1_sr4ry")
 [node name="Guest" parent="." unique_id=159835390 instance=ExtResource("2_14t44")]
 
 [node name="IdCheck" parent="." unique_id=315101865 instance=ExtResource("3_cuqtf")]
+position = Vector2(914, 538)

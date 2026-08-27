@@ -8,7 +8,6 @@ var real_or_fake
 var rand_minigame
 var dialogue 
 
-
 func newguesttype():
 		real_or_fake = randi_range(0,9) 
 		if  real_or_fake in range(3,9): # 30% chance of guest being fake
