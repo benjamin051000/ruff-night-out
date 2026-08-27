@@ -8,13 +8,10 @@ var real_or_fake
 var rand_minigame
 var dialogue 
 
-const IdCheck = preload("res://src/minigames/id_check.tscn")
-const pic_response = preload("res://src/minigames/pic_response.tscn")
-const speech_bubble_test = preload("res://src/minigames/speech_bubble.tscn")
+var idc = preload("res://src/minigames/id_check.tscn").instantiate()
+var picresp = preload("res://src/minigames/pic_response.tscn").instantiate()
+var speechtest = preload("res://src/minigames/speech_bubble.tscn").instantiate()
 
-var idc := IdCheck.instantiate()
-var picresp := pic_response.instantiate()
-var speechtest := speech_bubble_test.instantiate()
 
 func _ready() -> void:
 	dogtype = newguesttype()

@@ -6,27 +6,32 @@ var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV",
 	"King Barkthur of Wagsalot", "Lady Sheila Sniffums", "Barry Borkbottom", 
 	"Woofred Diggysworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
 	"Barkley Wellington", "Trust Me, I'm A Dog"]
+var street_names = []
 
-var Guest = preload("uid://cub3q0665kin3")
-var idc = preload("uid://cp8ahl3obc3ay")
-
+var Guest = preload("res://src/characters/guest.tscn").instantiate()
 @export var dogtype = Guest.DogType
 
 
-
 func make_address():
-	#Randomize numbers from #1–999 
-	# pick a street name from a list (list needed)
-	pass
-
+	var streetnum = randi_range(100,999) 
+	var streetname = street_names[(randi_range(0,10))]
+	var address = streetnum + " " + streetname
+	return address
+	
 func make_expiration(dob):
 	#Randomize dates from 01/01/2030–12/31/2035 
 	# but have the month and the day match the DoB.
 	pass
 
 func make_IDnum():
-	# Randomize 9 digits
-	pass
+	const chars = "0123456789"
+	var id_length := 9
+	var id_string := ""
+
+	for i in range(id_length):
+		id_string += chars[randi() % chars.length()]
+		
+	return id_string
 
 func make_age(dogType):
 	if dogType == Guest.DogType.REAL:
@@ -40,32 +45,30 @@ func make_age(dogType):
 func make_name(dogtype):
 	if dogtype == Guest.DogType.REAL:
 		real_dog_names.shuffle()
-		idc.Name.text = real_dog_names.pop_back()
+		$Name.text = real_dog_names.pop_back()
 		
 	else:
 		fake_dog_names.shuffle()
-		idc.Name.text = fake_dog_names.pop_back()
+		$Name.text = fake_dog_names.pop_back()
 
 const PLACEHOLDER_REAL_PAWPRINT = preload("uid://dlxv2ryy4auyl")
 const PLACEHOLDER_FAKE_PAWPRINT = preload("uid://wqh44j6ocm3j")
 
 func make_pawprint(dogtype):
 	if dogtype == Guest.DogType.REAL:
-		idc.Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
-		
+		$Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
 	else:
-		idc.Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
+		$Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
 		
 func start_id_check_minigame(dogtype):
-	idc.Dogtype = dogtype
-	idc.Name.text = idc.make_name(dogtype)
-	idc.DoB.text = idc.make_age(dogtype)
-	idc.Address.text = idc.make_address()
-	idc.Expires.text = idc.make_expiration(idc.DoB.text)
-	idc.IDnum.text = idc.make_ID()
-	idc.Pawprint.Texture = idc.make_pawprint(dogtype)
+	$Dogtype.text = dogtype
+	$Name.text = make_name(dogtype)
+	$DoB.text = make_age(dogtype)
+	$Address.text = make_address()
+	$Expires.text = make_expiration($DoB.text)
+	$IDnum.text = make_IDnum()
+	$Pawprint.Texture = make_pawprint(dogtype)
 	
-	add_child(idc)
 	
 func check_minigame_over():
-	idc.queue_free()
+	queue_free()
