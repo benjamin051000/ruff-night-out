@@ -43,3 +43,15 @@ offset_bottom = 808.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 72
 text = "Jan 1 1970"
+
+[node name="IDnum" type="Label" parent="." unique_id=838176978]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Pawprint" type="Label" parent="." unique_id=1082012754]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Dogtype" type="Label" parent="." unique_id=1602821932]
+offset_right = 40.0
+offset_bottom = 23.0

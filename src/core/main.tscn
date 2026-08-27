@@ -20,6 +20,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Guest" parent="." unique_id=159835390 instance=ExtResource("3_x62ka")]
 position = Vector2(1297, 662)
 scale = Vector2(0.5, 0.5)
+dogtype = null
 
 [node name="Button" type="Button" parent="." unique_id=781993982]
 offset_left = 1141.0
