@@ -3,11 +3,11 @@ extends Node
 var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy", 
 	"Teddy", "Willa", "Otso", "Osho", "Tenor", "Bernie", "Cassie"]
 var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV", 
-	"King Barkthur of Wagsalot", "Lady Sheila Sniffums", "Barry Borkbottom", 
-	"Woofred Diggysworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
-	"Barkley Wellington", "Trust Me, I'm A Dog"]
+	"King Barkthur", "Lady Sniffums", "Barry Borkbottom", 
+	"Woofred Digsworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
+	"Barkley Barkton", "Ima Dog"]
 var street_names = ["Ray Way","Cloudy Ct","Maisy Ln","Ollie Blvd",
-		"Rini Rd","Ratface Terrace","Gem Dr","Rhyme Pl"]
+		"Rini Rd","Ratface Terr","Gem Dr","Rhyme Pl"]
 var Guest 
 var dogtype
 
