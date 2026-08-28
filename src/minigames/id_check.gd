@@ -71,12 +71,14 @@ func make_name(dogtype):
 		name = fake_dog_names.pop_back()
 		return name
 
+var real_paw = [preload("res://assets/minigame/dogpaw2.png"), preload("res://assets/minigame/dogpaw.png")]
+var fake_paw = [preload("res://assets/minigame/fakepaw.png"), preload("res://assets/minigame/catpaw.png")]
 
 func make_pawprint(dogtype):
 	if dogtype == Guest.DogType.REAL:
-		$Pawprint.texture = preload("res://assets/minigame/dogpaw2.png")
+		$Pawprint.texture = real_paw[randi_range(0,1)]
 	else:
-		$Pawprint.texture = preload("res://assets/minigame/fakepaw.png")
+		$Pawprint.texture = fake_paw[randi_range(0,1)]
 		
 func start_id_check_minigame(dogtype):
 	$Dogtype.text = Guest.DogType.keys()[dogtype]
