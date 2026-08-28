@@ -8,6 +8,11 @@ var real_or_fake
 var rand_minigame
 var dialogue 
 
+var in_queue := false
+
+## Rest point, at the bottom of the sprite (their feet)
+var rest_point_bottom: Vector2
+
 func newguesttype():
 		real_or_fake = randi_range(0,9) 
 		if  real_or_fake in range(3,9): # 30% chance of guest being fake
@@ -28,7 +33,12 @@ func talk(dogType):  #for initial greeting to bouncer
 	else:
 		return speech_bubble.display_text(fake_speech[(randi_range(0,4))])
 		
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
+func _process(delta: float) -> void:
+	if in_queue:
+		position.y = rest_point_bottom.y - sprite_2d.texture.get_size().y / 2 * scale.y
+		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
 
 func _ready() -> void:
 	newguesttype()

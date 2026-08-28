@@ -17,3 +17,9 @@ centered = false
 scale = Vector2(1, 0.99999994)
 texture = ExtResource("1_qp2hx")
 centered = false
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1772560592]
+position = Vector2(172, 218)
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="." unique_id=1910213945]
+position = Vector2(172, 218)

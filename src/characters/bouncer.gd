@@ -11,7 +11,3 @@ var pic_response := PIC_RESPONSE.instantiate()
 func start_pic_response():
 	pic_response.position.y -= 100
 	add_child(pic_response)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
