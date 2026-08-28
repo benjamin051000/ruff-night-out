@@ -6,9 +6,8 @@ var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV",
 	"King Barkthur of Wagsalot", "Lady Sheila Sniffums", "Barry Borkbottom", 
 	"Woofred Diggysworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
 	"Barkley Wellington", "Trust Me, I'm A Dog"]
-var street_names = ["Placeholder1","Placeholder2","Placeholder3","Placeholder4",
-		"Placeholder5","Placeholder6","Placeholder7","Placeholder8",
-		"Placeholder9","Placeholder10"]
+var street_names = ["Ray Way","Cloudy Ct","Maisy Ln","Ollie Blvd",
+		"Rini Rd","Ratface Terrace","Gem Dr","Rhyme Pl"]
 var Guest 
 var dogtype
 
