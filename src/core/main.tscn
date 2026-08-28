@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://861o3nvyxcr7"]
 
 [ext_resource type="Script" uid="uid://dap5gqjpnfjvt" path="res://src/core/main.gd" id="1_avv2o"]
+[ext_resource type="Texture2D" uid="uid://wk6hfti7ecom" path="res://assets/px_mainscene_backest.png" id="2_2uitn"]
 [ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_ivtyw"]
 [ext_resource type="Texture2D" uid="uid://cd4r43p408kgg" path="res://assets/px_mainscene.png" id="2_q2b63"]
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
@@ -11,13 +12,29 @@
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=576812507]
+[node name="Background" type="Sprite2D" parent="." unique_id=975319224]
+z_index = -10
+scale = Vector2(10, 10)
+texture = ExtResource("2_2uitn")
+centered = false
+
+[node name="Building" type="Sprite2D" parent="." unique_id=576812507]
+z_index = -5
 scale = Vector2(10, 10)
 texture = ExtResource("2_q2b63")
 centered = false
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=52996725]
+z_index = -10
+offset_left = 1439.0
+offset_top = 416.0
+offset_right = 1785.0
+offset_bottom = 895.0
+
 [node name="Door" parent="." unique_id=1938332207 instance=ExtResource("3_w61mg")]
-position = Vector2(1451, 432)
+z_index = -8
+position = Vector2(1460, 440)
+scale = Vector2(10, 10)
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
 visible = false
