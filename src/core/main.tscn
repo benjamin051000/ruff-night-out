@@ -20,17 +20,18 @@ centered = false
 position = Vector2(1451, 432)
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
+visible = false
 position = Vector2(1665, 632)
 scale = Vector2(0.5, 0.5)
 
-[node name="Button" type="Button" parent="." unique_id=781993982]
+[node name="AcceptButton" type="Button" parent="." unique_id=781993982]
 offset_left = 1100.0
 offset_top = 903.0
 offset_right = 1300.0
 offset_bottom = 1053.0
 text = "Let 'Em In"
 
-[node name="Button2" type="Button" parent="." unique_id=819803084]
+[node name="RejectButton" type="Button" parent="." unique_id=819803084]
 offset_left = 1308.0
 offset_top = 903.0
 offset_right = 1508.0
@@ -58,22 +59,22 @@ bus = &"Music"
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
 
 [node name="Guest" parent="Guests" unique_id=159835390 instance=ExtResource("3_x62ka")]
-position = Vector2(1395, 735)
+position = Vector2(-510, 765)
 scale = Vector2(0.5, 0.5)
 
-[node name="Guest2" parent="Guests" unique_id=2119314220 instance=ExtResource("3_x62ka")]
-position = Vector2(995, 739)
+[node name="Guest2" parent="Guests" unique_id=862897022 instance=ExtResource("3_x62ka")]
+position = Vector2(-323, 752)
 scale = Vector2(0.5, 0.5)
 
-[node name="Guest3" parent="Guests" unique_id=1368057448 instance=ExtResource("3_x62ka")]
-position = Vector2(1198, 739)
+[node name="Guest3" parent="Guests" unique_id=1742052639 instance=ExtResource("3_x62ka")]
+position = Vector2(-130, 742)
 scale = Vector2(0.5, 0.5)
 
 [node name="Queue" type="Node2D" parent="." unique_id=1203288871]
 script = ExtResource("6_q2b63")
 
 [node name="Marker2D" type="Marker2D" parent="Queue" unique_id=1228907607]
-position = Vector2(1410, 880)
+position = Vector2(1400, 880)
 
 [node name="Marker2D2" type="Marker2D" parent="Queue" unique_id=260414339]
 position = Vector2(1201, 880)
@@ -99,5 +100,7 @@ position = Vector2(197, 880)
 [node name="Marker2D9" type="Marker2D" parent="Queue" unique_id=806857975]
 position = Vector2(46, 880)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]
+[node name="GuestSpawner" type="Node2D" parent="." unique_id=838614278]
+
+[connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="RejectButton" to="." method="_on_reject_button_pressed"]
