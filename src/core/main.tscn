@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
 [ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="3_x62ka"]
 [ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="6_q2b63"]
+[ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
 
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
@@ -19,12 +20,7 @@ centered = false
 position = Vector2(1451, 432)
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
-visible = false
 position = Vector2(1665, 632)
-scale = Vector2(0.5, 0.5)
-
-[node name="Guest" parent="." unique_id=159835390 instance=ExtResource("3_x62ka")]
-position = Vector2(1295, 740)
 scale = Vector2(0.5, 0.5)
 
 [node name="Button" type="Button" parent="." unique_id=781993982]
@@ -57,6 +53,50 @@ zoom = Vector2(2, 2)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=658291454]
 stream = ExtResource("6_q2b63")
 autoplay = true
+
+[node name="Guests" type="Node2D" parent="." unique_id=2109371517]
+
+[node name="Guest" parent="Guests" unique_id=159835390 instance=ExtResource("3_x62ka")]
+position = Vector2(1395, 735)
+scale = Vector2(0.5, 0.5)
+
+[node name="Guest2" parent="Guests" unique_id=2119314220 instance=ExtResource("3_x62ka")]
+position = Vector2(995, 739)
+scale = Vector2(0.5, 0.5)
+
+[node name="Guest3" parent="Guests" unique_id=1368057448 instance=ExtResource("3_x62ka")]
+position = Vector2(1198, 739)
+scale = Vector2(0.5, 0.5)
+
+[node name="Queue" type="Node2D" parent="." unique_id=1203288871]
+script = ExtResource("6_q2b63")
+
+[node name="Marker2D" type="Marker2D" parent="Queue" unique_id=1228907607]
+position = Vector2(1410, 880)
+
+[node name="Marker2D2" type="Marker2D" parent="Queue" unique_id=260414339]
+position = Vector2(1201, 880)
+
+[node name="Marker2D3" type="Marker2D" parent="Queue" unique_id=539310691]
+position = Vector2(1005, 880)
+
+[node name="Marker2D4" type="Marker2D" parent="Queue" unique_id=903587283]
+position = Vector2(806, 880)
+
+[node name="Marker2D5" type="Marker2D" parent="Queue" unique_id=1067779813]
+position = Vector2(619, 880)
+
+[node name="Marker2D6" type="Marker2D" parent="Queue" unique_id=25484722]
+position = Vector2(479, 880)
+
+[node name="Marker2D7" type="Marker2D" parent="Queue" unique_id=2063251484]
+position = Vector2(326, 880)
+
+[node name="Marker2D8" type="Marker2D" parent="Queue" unique_id=1832301719]
+position = Vector2(197, 880)
+
+[node name="Marker2D9" type="Marker2D" parent="Queue" unique_id=806857975]
+position = Vector2(46, 880)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]
