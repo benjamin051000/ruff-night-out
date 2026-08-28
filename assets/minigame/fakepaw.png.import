@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://huxoag0sas6w"
-path="res://.godot/imported/placeholder_licence.png-4db380b9b70a8150d933397a7bbb034a.ctex"
+uid="uid://cy5a0o8wqmt6e"
+path="res://.godot/imported/fakepaw.png-248fdbdce9b103546a964a760ff8e293.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder_licence.png"
-dest_files=["res://.godot/imported/placeholder_licence.png-4db380b9b70a8150d933397a7bbb034a.ctex"]
+source_file="res://assets/minigame/fakepaw.png"
+dest_files=["res://.godot/imported/fakepaw.png-248fdbdce9b103546a964a760ff8e293.ctex"]
 
 [params]
 

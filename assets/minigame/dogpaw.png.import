@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlxv2ryy4auyl"
-path="res://.godot/imported/placeholder_real_pawprint.png-9460f05864fc5ac32aad5160865ecd18.ctex"
+uid="uid://dtn2wrsj5cq8h"
+path="res://.godot/imported/dogpaw.png-e07d1655cb5acd1cc1f79627494db4dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder_real_pawprint.png"
-dest_files=["res://.godot/imported/placeholder_real_pawprint.png-9460f05864fc5ac32aad5160865ecd18.ctex"]
+source_file="res://assets/minigame/dogpaw.png"
+dest_files=["res://.godot/imported/dogpaw.png-e07d1655cb5acd1cc1f79627494db4dc.ctex"]
 
 [params]
 
