@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cpivaro1u3vas" path="res://icon.svg" id="1_qp2hx"]
 [ext_resource type="Script" uid="uid://bck8q3d6r6r8t" path="res://src/world/door.gd" id="1_w0rgm"]
+[ext_resource type="AudioStream" uid="uid://dfna7sdnyxix0" path="res://assets/sfx/ruffnight_dooropen_v6.wav" id="3_fmg2m"]
+[ext_resource type="AudioStream" uid="uid://bb0yfwsscu7u3" path="res://assets/sfx/ruffnight_doorclose_v2.wav" id="4_slxum"]
 
 [node name="Door" type="Node2D" unique_id=1938332207]
 script = ExtResource("1_w0rgm")
@@ -20,6 +22,9 @@ centered = false
 
 [node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1772560592]
 position = Vector2(172, 218)
+stream = ExtResource("3_fmg2m")
 
 [node name="CloseSound" type="AudioStreamPlayer2D" parent="." unique_id=1910213945]
 position = Vector2(172, 218)
+stream = ExtResource("4_slxum")
+pitch_scale = 1.3

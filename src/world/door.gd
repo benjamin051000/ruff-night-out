@@ -36,7 +36,9 @@ func _lp_helper(cutoff: float) -> void:
 func open() -> void:
 	_pos_helper(open_x, door_opened)
 	_lp_helper(20500)  # Max allowed
+	$OpenSound.play()
 
 func close() -> void:
 	_pos_helper(close_x, door_closed)
 	_lp_helper(lp_cutoff)
+	$CloseSound.play()
