@@ -15,7 +15,7 @@ texture = ExtResource("2_q2b63")
 centered = false
 
 [node name="Door" parent="." unique_id=1938332207 instance=ExtResource("3_w61mg")]
-position = Vector2(1505, 401)
+position = Vector2(1451, 432)
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_ivtyw")]
 visible = false
@@ -23,22 +23,22 @@ position = Vector2(1665, 632)
 scale = Vector2(0.5, 0.5)
 
 [node name="Guest" parent="." unique_id=159835390 instance=ExtResource("3_x62ka")]
-position = Vector2(1297, 662)
+position = Vector2(1295, 740)
 scale = Vector2(0.5, 0.5)
 
 [node name="Button" type="Button" parent="." unique_id=781993982]
-offset_left = 1141.0
-offset_top = 901.0
-offset_right = 1290.0
-offset_bottom = 1003.0
-text = "Let in"
+offset_left = 1100.0
+offset_top = 903.0
+offset_right = 1300.0
+offset_bottom = 1053.0
+text = "Let 'Em In"
 
 [node name="Button2" type="Button" parent="." unique_id=819803084]
-offset_left = 1317.0
+offset_left = 1308.0
 offset_top = 903.0
-offset_right = 1466.0
-offset_bottom = 1005.0
-text = "Reject"
+offset_right = 1508.0
+offset_bottom = 1053.0
+text = "Bounce 'Em"
 
 [node name="DoorCamera" type="Camera2D" parent="." unique_id=319322912]
 position = Vector2(1654, 625)
