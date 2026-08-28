@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cd4r43p408kgg" path="res://assets/px_mainscene.png" id="2_q2b63"]
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
 [ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="3_x62ka"]
-[ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="6_q2b63"]
+[ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="5_nxx65"]
 [ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
 
 [node name="Main" type="Node2D" unique_id=1930110823]
@@ -50,8 +50,8 @@ enabled = false
 position = Vector2(1654, 625)
 zoom = Vector2(2, 2)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=658291454]
-stream = ExtResource("6_q2b63")
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=658291454]
+stream = ExtResource("5_nxx65")
 autoplay = true
 
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
