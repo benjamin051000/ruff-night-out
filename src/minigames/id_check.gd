@@ -13,7 +13,7 @@ var dogtype
 
 func make_address():
 	var streetnum = str(randi_range(100,999)) 
-	var streetname = street_names[(randi_range(0,9))]
+	var streetname = street_names[(randi_range(0,7))]
 	var address = streetnum + " " + streetname
 	return address
 	
@@ -71,14 +71,12 @@ func make_name(dogtype):
 		name = fake_dog_names.pop_back()
 		return name
 
-const PLACEHOLDER_REAL_PAWPRINT = preload("uid://dlxv2ryy4auyl")
-const PLACEHOLDER_FAKE_PAWPRINT = preload("uid://wqh44j6ocm3j")
 
-#func make_pawprint(dogtype):
-	#if dogtype == Guest.DogType.REAL:
-		#$Pawprint.Texture = PLACEHOLDER_REAL_PAWPRINT #placeholder
-	#else:
-		#$Pawprint.Texture = PLACEHOLDER_FAKE_PAWPRINT #placeholder
+func make_pawprint(dogtype):
+	if dogtype == Guest.DogType.REAL:
+		$Pawprint.texture = preload("res://assets/minigame/dogpaw2.png")
+	else:
+		$Pawprint.texture = preload("res://assets/minigame/fakepaw.png")
 		
 func start_id_check_minigame(dogtype):
 	$Dogtype.text = Guest.DogType.keys()[dogtype]
@@ -87,7 +85,7 @@ func start_id_check_minigame(dogtype):
 	$Address.text = make_address()
 	$Expires.text = make_expiration($DoB.text)
 	$IDnum.text = make_IDnum()
-#	$Pawprint.Texture = make_pawprint(dogtype)
+	make_pawprint(dogtype)
 	
 	
 func check_minigame_over():

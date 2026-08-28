@@ -15,24 +15,12 @@ run/main_scene="uid://861o3nvyxcr7"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="uid://cty7waj42h2u6"
-
-[autoload]
-
-Global="*uid://bj517plvu23ec"
-
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[editor]
-
-movie_writer/movie_file="/home/benjamin/src/ruff-night-out/movie.avi"
 
 [physics]
 
