@@ -53,6 +53,7 @@ zoom = Vector2(2, 2)
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=658291454]
 stream = ExtResource("5_nxx65")
 autoplay = true
+bus = &"Music"
 
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
 
