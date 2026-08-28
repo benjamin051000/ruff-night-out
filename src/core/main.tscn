@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dap5gqjpnfjvt" path="res://src/core/main.gd" id="1_avv2o"]
 [ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_ivtyw"]
-[ext_resource type="Texture2D" uid="uid://dxmh1n6fnlsav" path="res://assets/placeholder_mainscene.png" id="2_x62ka"]
+[ext_resource type="Texture2D" uid="uid://cd4r43p408kgg" path="res://assets/px_mainscene.png" id="2_q2b63"]
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
 [ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="3_x62ka"]
 
@@ -10,8 +10,8 @@
 script = ExtResource("1_avv2o")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=576812507]
-scale = Vector2(0.49999997, 0.5)
-texture = ExtResource("2_x62ka")
+scale = Vector2(10, 10)
+texture = ExtResource("2_q2b63")
 centered = false
 
 [node name="Door" parent="." unique_id=1938332207 instance=ExtResource("3_w61mg")]
