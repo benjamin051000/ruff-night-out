@@ -1,32 +1,30 @@
 [gd_scene format=3 uid="uid://pl5mdsgdp4c4"]
 
 [ext_resource type="Script" uid="uid://bmt8l3f6xyqy3" path="res://src/minigames/speech_bubble.gd" id="1_2fkwg"]
-[ext_resource type="Texture2D" uid="uid://c7ob1hf77lxjn" path="res://assets/placeholder_speech_bubble.png" id="2_7h4kk"]
+[ext_resource type="Texture2D" uid="uid://7fkuq6rurrcy" path="res://assets/px_speechbubble_bouncer.png" id="2_7h4kk"]
 
 [node name="SpeechBubble" type="MarginContainer" unique_id=690798450]
-offset_right = 110.0
-offset_bottom = 93.0
+offset_right = 50.0
+offset_bottom = 51.0
 script = ExtResource("1_2fkwg")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1918088316]
 layout_mode = 2
 texture = ExtResource("2_7h4kk")
-region_rect = Rect2(0, 0, 225.71176, 184.83298)
-patch_margin_left = 52
-patch_margin_top = 50
-patch_margin_right = 58
-patch_margin_bottom = 43
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=392018739]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1225250979]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1598112095]

@@ -12,6 +12,14 @@ const punctuation_time := 0.2
 var text = ""
 var letter_idx = 0
 
+enum BubbleStyle {BOUNCER, GUEST}
+@export var bubble_style: BubbleStyle = BubbleStyle.BOUNCER
+
+func _ready() -> void:
+	if bubble_style == BubbleStyle.GUEST:
+		$NinePatchRect.texture = preload("res://assets/px_speechbubble_other.png")
+		label.add_theme_color_override("font_color", Color(0, 0, 0))
+
 signal finished_displaying
 
 func _on_timer_timeout() -> void:
