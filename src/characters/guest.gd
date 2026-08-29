@@ -20,18 +20,18 @@ func talk(dogType):  #for initial greeting to bouncer
 		"RealDog greeting 3", "RealDog greeting 4", "RealDog greeting 5"]
 	const fake_speech = ["I hate pets!","NotDog greeting 2",
 		"NotDog greeting 3","NotDog greeting 4", "NotDog greeting 5"]
-		# if we change the amount of greeting options, 
-		# need to change the ranges below as well
 	if dogType == DogType.REAL:
-		return speech_bubble.display_text(real_speech[(randi_range(0,4))])
+		return speech_bubble.display_text(real_speech.pick_random())
 	else:
-		return speech_bubble.display_text(fake_speech[(randi_range(0,4))])
+		return speech_bubble.display_text(fake_speech.pick_random())
+
 
 func _process(delta: float) -> void:
 	const sprite_height := 34  # measured via ruler
 	if in_queue:
 		position.y = rest_point_bottom.y - sprite_height/2.0 * scale.y
 		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
+
 
 func _ready() -> void:
 	if  randf() >= .3: # 30% chance of guest being fake
@@ -57,4 +57,3 @@ func _ready() -> void:
 		# would this go in main?
 	
 	# guest action response based on going in door vs turned away
-	
