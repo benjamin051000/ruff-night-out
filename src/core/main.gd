@@ -26,15 +26,13 @@ func move_camera(to: Camera2D) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	door.door_opened.connect(func():
-		bouncer.visible = true
-		await get_tree().create_timer(1).timeout
-		door.close()
-		move_camera(full_camera)
-		spawn_guests()
-	)
-	await get_tree().create_timer(1).timeout
 	door.open()
+	await get_tree().create_timer(1).timeout
+	bouncer.visible = true
+	await get_tree().create_timer(1).timeout
+	door.close()
+	move_camera(full_camera)
+	spawn_guests()
 
 
 func spawn_guests() -> void:
@@ -43,12 +41,18 @@ func spawn_guests() -> void:
 		var guest := guest_scn.instantiate()
 		guest.scale = Vector2(10, 10)
 		guests.add_child(guest)
-		Global.new_guest_spawned.emit(guest)
+		queue.add_guest(guest)
 
 
 func _on_accept_button_pressed() -> void:
-	Global.guest_left_queue.emit(true)
+	bouncer.step_back()
+	door.open()
+	await get_tree().create_timer(1).timeout
+	queue.remove_guest(true)
+	await get_tree().create_timer(.5).timeout
+	door.close()
+	bouncer.step_forward()
 
 
 func _on_reject_button_pressed() -> void:
-	Global.guest_left_queue.emit(false)
+	queue.remove_guest(false)

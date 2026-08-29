@@ -13,13 +13,11 @@ func get_current_guest() -> Guest:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.new_guest_spawned.connect(_on_new_guest_spawned)
-	Global.guest_left_queue.connect(_on_guest_left_the_queue)
 	queue_spots = get_children()
-	pass
 
 
-func _on_new_guest_spawned(guest: Guest) -> void:
+## Add a guest to the queue line.
+func add_guest(guest: Guest) -> void:
 	queue.append(guest)
 	# If we're out of space, just stick it off-screen.
 	if queue.size() > queue_spots.size():
@@ -33,12 +31,12 @@ func _on_new_guest_spawned(guest: Guest) -> void:
 	guest.in_queue = true
 
 
-func _on_guest_left_the_queue(accepted: bool) -> void:
-	# TODO advance everyone else forward in the queue.
-	# Basically just update their rest points.
+## Remove a guest from the queue, either by letting them into the club
+## or kicking them to the curb.
+func remove_guest(accepted: bool) -> void:
 	var guest := get_current_guest()
 	if accepted:
-		guest.rest_point_bottom.x = 1625  # TODO eyeballed
+		guest.enter_door()
 	else: 
 		guest.rest_point_bottom.x = 1920*1.5
 	queue.pop_front()

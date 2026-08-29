@@ -30,6 +30,11 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/ogv/encoding_speed=1
+movie_writer/movie_file="/home/benjamin/src/ruff-night-out/movie.avi"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -32,6 +32,16 @@ func _process(delta: float) -> void:
 		position.y = rest_point_bottom.y - sprite_height/2.0 * scale.y
 		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
 
+func enter_door() -> void:
+	in_queue = false
+	const door_x := 1600  # eyeballed
+	var tween := create_tween()
+	tween.tween_property(self, "position:x", door_x, 0.5)
+	tween.tween_callback(func(): z_index = -9)
+	tween.tween_property(self, "modulate:a", 0, 0.5)
+	tween.parallel().tween_property(self, "scale", scale/1.2, 0.5)
+	tween.tween_callback(queue_free)
+
 
 func _ready() -> void:
 	if  randf() >= .3: # 30% chance of guest being fake
