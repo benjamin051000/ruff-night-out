@@ -25,16 +25,45 @@ func move_camera(to: Camera2D) -> void:
 	pos_tween.tween_property(actual_camera, "position", to.position, t).set_trans(Tween.TRANS_SINE)
 	
 
+const beat_interval := 60.0/124
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	black_fade_in.visible = true
+	start_club_light($ClubLight)
+	#await get_tree().create_timer(beat_interval).timeout
+	start_club_light($ClubLight2)
 	intro()
+
+func start_club_light(light: Light2D) -> void:
+	var colors := [
+	Color.MAGENTA,
+	Color.CYAN,
+	Color(1, 0.3, 0.6),
+	Color(0.3, 1, 0.5),
+	Color(1, 0.8, 0.1),
+	Color(0.6, 0.2, 1),
+	Color(1, 0.2, 0.2),
+	Color(0.2, 0.6, 1),
+	Color(1, 0.5, 0.0),
+	]
+	var flash_time := beat_interval * 0.15   # fast hit to white
+	var settle_time := beat_interval * 0.85  # slower fade to color
+
+	var tween := create_tween().set_loops()
+	for base_color in colors:
+		tween.tween_property(light, "color", Color(.8,.8,.8), flash_time) \
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(light, "color", base_color, settle_time) \
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
 
 func intro() -> void:
 	# Fade in
-	black_fade_in.visible = true
 	var fade_in := create_tween()
 	fade_in.tween_property(black_fade_in, "modulate:a", 0, 2)
 	await fade_in.finished
+	black_fade_in.queue_free()
 	
 	# Cutscene
 	door.open()

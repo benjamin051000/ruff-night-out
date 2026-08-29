@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="5_nxx65"]
 [ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6kv4h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2wd"]
+noise = SubResource("FastNoiseLite_6kv4h")
+
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
 
@@ -19,10 +24,29 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=975319224]
+light_mask = 2
 z_index = -10
 scale = Vector2(10, 10)
 texture = ExtResource("2_2uitn")
 centered = false
+
+[node name="ClubLight" type="PointLight2D" parent="." unique_id=2037196651]
+light_mask = 2
+z_index = -8
+position = Vector2(1206.5, 446.5)
+scale = Vector2(2.2050781, 1.7519531)
+energy = 7.65
+range_item_cull_mask = 2
+texture = SubResource("NoiseTexture2D_iv2wd")
+
+[node name="ClubLight2" type="PointLight2D" parent="." unique_id=1252828365]
+light_mask = 2
+z_index = -8
+position = Vector2(1190, 415)
+scale = Vector2(2.3847659, 2.0986328)
+energy = 7.65
+range_item_cull_mask = 2
+texture = SubResource("NoiseTexture2D_iv2wd")
 
 [node name="Building" type="Sprite2D" parent="." unique_id=576812507]
 z_index = -5
@@ -30,15 +54,8 @@ scale = Vector2(10, 10)
 texture = ExtResource("2_q2b63")
 centered = false
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=52996725]
-z_index = -10
-offset_left = 1439.0
-offset_top = 416.0
-offset_right = 1785.0
-offset_bottom = 895.0
-
 [node name="Door" parent="." unique_id=1938332207 instance=ExtResource("3_w61mg")]
-z_index = -8
+z_index = -7
 position = Vector2(1460, 440)
 scale = Vector2(10, 10)
 
