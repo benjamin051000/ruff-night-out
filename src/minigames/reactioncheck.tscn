@@ -1,6 +1,36 @@
 [gd_scene format=3 uid="uid://cth3e56lrund7"]
 
 [ext_resource type="Script" uid="uid://cis0ml2otiukc" path="res://src/minigames/reactioncheck.gd" id="1_ukbtu"]
+[ext_resource type="Texture2D" uid="uid://p0q8bmbdn3yo" path="res://assets/px_whiteboard.png" id="2_tkyjx"]
 
 [node name="Reactioncheck" type="Node2D" unique_id=634037674]
 script = ExtResource("1_ukbtu")
+
+[node name="Whiteboard" type="Sprite2D" parent="." unique_id=1188756116]
+texture = ExtResource("2_tkyjx")
+
+[node name="TextureRect" type="TextureRect" parent="Whiteboard" unique_id=64989627]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="Whiteboard" unique_id=1960108380]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect3" type="TextureRect" parent="Whiteboard" unique_id=1841418695]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GuestResp" type="Sprite2D" parent="." unique_id=143666793]
+
+[node name="Response1" type="TextureRect" parent="GuestResp" unique_id=523248941]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Response2" type="TextureRect" parent="GuestResp" unique_id=1919354465]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Response3" type="TextureRect" parent="GuestResp" unique_id=977380474]
+offset_right = 40.0
+offset_bottom = 40.0
