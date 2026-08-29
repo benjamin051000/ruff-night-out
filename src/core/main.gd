@@ -5,6 +5,7 @@ var strikes := 3
 
 enum Minigames {PIC_RESPONSE, ID_CHECK}
 
+@onready var black_fade_in: ColorRect = $BlackFadeIn
 @onready var bouncer: Node2D = $Bouncer
 @onready var door: Node2D = $Door
 @onready var queue: Node2D = $Queue
@@ -27,11 +28,24 @@ func move_camera(to: Camera2D) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	intro()
-	
+
 func intro() -> void:
+	# Fade in
+	black_fade_in.visible = true
+	var fade_in := create_tween()
+	fade_in.tween_property(black_fade_in, "modulate:a", 0, 2)
+	await fade_in.finished
+	
+	# Cutscene
 	door.open()
 	await get_tree().create_timer(1).timeout
 	bouncer.exit_door()
+	bouncer.step_back()
+	
+	# TODO manager says "Dogs only." placeholder wait 1s
+	await get_tree().create_timer(1).timeout
+	
+	bouncer.step_forward()
 	await get_tree().create_timer(1).timeout
 	door.close()
 	move_camera(full_camera)

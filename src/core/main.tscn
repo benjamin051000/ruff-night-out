@@ -11,6 +11,13 @@
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
 
+[node name="BlackFadeIn" type="ColorRect" parent="." unique_id=1702087831]
+visible = false
+z_index = 100
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
 [node name="Background" type="Sprite2D" parent="." unique_id=975319224]
 z_index = -10
 scale = Vector2(10, 10)
