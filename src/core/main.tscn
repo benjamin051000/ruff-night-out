@@ -104,7 +104,5 @@ position = Vector2(197, 880)
 [node name="Marker2D9" type="Marker2D" parent="Queue" unique_id=806857975]
 position = Vector2(46, 880)
 
-[node name="GuestSpawner" type="Node2D" parent="." unique_id=838614278]
-
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="RejectButton" to="." method="_on_reject_button_pressed"]
