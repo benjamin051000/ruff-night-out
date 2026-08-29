@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-const PIC_RESPONSE = preload("res://src/minigames/pic_response.tscn")
+const PIC_RESPONSE = preload("res://src/minigames/reactioncheck.tscn")
 var pic_response := PIC_RESPONSE.instantiate()
 
 func start_pic_response():

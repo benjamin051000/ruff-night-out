@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://bn2xguuklwsab"]
 
 [ext_resource type="Script" uid="uid://dbv6c0hiq7mht" path="res://src/characters/bouncer.gd" id="1_usyie"]
+[ext_resource type="Texture2D" uid="uid://d3hwfmkk5pjnp" path="res://assets/px_bouncer_armraise.png" id="2_52k8e"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="2_dgjfo"]
-[ext_resource type="Texture2D" uid="uid://cdxvkpgw1m787" path="res://assets/placeholder_bouncer.png" id="2_nihnh"]
+[ext_resource type="Texture2D" uid="uid://bvu2ahn0m8454" path="res://assets/px_bouncer_idle.png" id="3_g5tuw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_liimr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_52k8e")
+}],
+"loop": 1,
+"name": &"arm_raise",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g5tuw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Bouncer" type="Node2D" unique_id=1387749208]
 script = ExtResource("1_usyie")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1032592124]
-texture = ExtResource("2_nihnh")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879952672]
+sprite_frames = SubResource("SpriteFrames_liimr")
+animation = &"idle"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_dgjfo")]
 visible = false
