@@ -1,14 +1,43 @@
 [gd_scene format=3 uid="uid://cd0f67f7l6p3e"]
 
 [ext_resource type="Script" uid="uid://cub3q0665kin3" path="res://src/characters/guest.gd" id="1_0lvjc"]
-[ext_resource type="Texture2D" uid="uid://bsdu0u6gcew7v" path="res://assets/placeholder_dogoutline.png" id="2_q4hpw"]
+[ext_resource type="Texture2D" uid="uid://xs388gqcwffk" path="res://assets/guest/px_doginline_dark_00.png" id="2_hhyjf"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="2_rmeho"]
+[ext_resource type="Texture2D" uid="uid://bftt5gopsjk" path="res://assets/guest/px_doginline_dark_01.png" id="3_ca1ay"]
+[ext_resource type="Texture2D" uid="uid://etu6urfak8m5" path="res://assets/guest/px_doginline_light_00.png" id="4_wvs0s"]
+[ext_resource type="Texture2D" uid="uid://ccy7nejw31hf2" path="res://assets/guest/px_doginline_light_01.png" id="5_7hjdx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_liimr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hhyjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ca1ay")
+}],
+"loop": 1,
+"name": &"dark",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wvs0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7hjdx")
+}],
+"loop": 1,
+"name": &"light",
+"speed": 2.0
+}]
 
 [node name="Guest" type="Node2D" unique_id=159835390]
 script = ExtResource("1_0lvjc")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=704659009]
-texture = ExtResource("2_q4hpw")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811732360]
+sprite_frames = SubResource("SpriteFrames_liimr")
+animation = &"dark"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_rmeho")]
 visible = false

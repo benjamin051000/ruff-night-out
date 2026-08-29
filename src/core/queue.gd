@@ -2,6 +2,8 @@ extends Node2D
 
 const Guest = preload("res://src/characters/guest.gd")  # apparently this gives us the type
 
+@export var light_sprite_threshold := 3
+
 var queue_spots: Array[Node]  # Actually Array[Marker2D] but the type system can't narrow it -_-
 ## A literal Queue. idx 0 is the front of the line.
 var queue: Array[Guest]
@@ -27,6 +29,8 @@ func _on_new_guest_spawned(guest: Guest) -> void:
 		var marker: Marker2D = queue_spots[queue.size()-1]
 		guest.rest_point_bottom = marker.position
 		guest.in_queue = true
+		if queue.size()-1 < light_sprite_threshold:
+			guest.sprite.play("light")
 
 
 func _on_guest_left_the_queue(accepted: bool) -> void:
@@ -44,3 +48,5 @@ func _on_guest_left_the_queue(accepted: bool) -> void:
 		var g := queue[i]
 		var new_rest_point_bottom := queue_spots[i]
 		g.rest_point_bottom = new_rest_point_bottom.position
+		if i < light_sprite_threshold:
+			g.sprite.play("light")

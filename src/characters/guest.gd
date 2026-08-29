@@ -13,6 +13,8 @@ var in_queue := false
 ## Rest point, at the bottom of the sprite (their feet)
 var rest_point_bottom: Vector2
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func newguesttype():
 		real_or_fake = randi_range(0,9) 
 		if  real_or_fake in range(3,9): # 30% chance of guest being fake
@@ -32,16 +34,16 @@ func talk(dogType):  #for initial greeting to bouncer
 		return speech_bubble.display_text(real_speech[(randi_range(0,4))])
 	else:
 		return speech_bubble.display_text(fake_speech[(randi_range(0,4))])
-		
-@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _process(delta: float) -> void:
+	const sprite_height := 34  # measured via ruler
 	if in_queue:
-		position.y = rest_point_bottom.y - sprite_2d.texture.get_size().y / 2 * scale.y
+		position.y = rest_point_bottom.y - sprite_height/2.0 * scale.y
 		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
 
 func _ready() -> void:
 	newguesttype()
+	sprite.play()
 	#need to talk in the speech bubble depending on dogtype
 	#dialogue = talk(dogtype)
 	#
