@@ -4,7 +4,6 @@ enum DogType {REAL, FAKE}
 
 @onready var speech_bubble: MarginContainer = $SpeechBubble
 @export var dogtype: DogType
-var real_or_fake
 var rand_minigame
 var dialogue 
 
@@ -14,13 +13,6 @@ var in_queue := false
 var rest_point_bottom: Vector2
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-func newguesttype():
-		real_or_fake = randi_range(0,9) 
-		if  real_or_fake in range(3,9): # 30% chance of guest being fake
-			dogtype = DogType.REAL
-		else:
-			dogtype = DogType.FAKE
 
 
 func talk(dogType):  #for initial greeting to bouncer
@@ -42,7 +34,10 @@ func _process(delta: float) -> void:
 		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
 
 func _ready() -> void:
-	newguesttype()
+	if  randf() >= .3: # 30% chance of guest being fake
+		dogtype = DogType.REAL
+	else:
+		dogtype = DogType.FAKE
 	sprite.play()
 	#need to talk in the speech bubble depending on dogtype
 	#dialogue = talk(dogtype)
