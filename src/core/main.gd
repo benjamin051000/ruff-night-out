@@ -1,12 +1,5 @@
 extends Node2D
 
-var guests: Array
-@onready var guest1: Node2D = $Guests/Guest
-@onready var guest2: Node2D = $Guests/Guest2
-@onready var guest3: Node2D = $Guests/Guest3
-
-@onready var queue: Node2D = $Queue
-
 ## When this hits 0, game over!
 var strikes := 3
 
@@ -14,10 +7,13 @@ enum Minigames {PIC_RESPONSE, ID_CHECK}
 
 @onready var bouncer: Node2D = $Bouncer
 @onready var door: Node2D = $Door
+@onready var queue: Node2D = $Queue
+@onready var guests: Node2D = $Guests
 
 @onready var door_camera: Camera2D = $DoorCamera
 @onready var full_camera: Camera2D = $FullCamera
 @onready var actual_camera: Camera2D = $ActualCamera
+
 
 ## Move actual_camera to one of the "preset" cameras.
 func move_camera(to: Camera2D) -> void:
@@ -35,20 +31,24 @@ func _ready() -> void:
 		await get_tree().create_timer(1).timeout
 		door.close()
 		move_camera(full_camera)
+		spawn_guests()
 	)
 	await get_tree().create_timer(1).timeout
 	door.open()
-	
-	await get_tree().create_timer(2).timeout
-	Global.new_guest_spawned.emit(guest1)
-	await get_tree().create_timer(.2).timeout
-	Global.new_guest_spawned.emit(guest2)
-	await get_tree().create_timer(.2).timeout
-	Global.new_guest_spawned.emit(guest3)
+
+
+func spawn_guests() -> void:
+	const guest_scn := preload("res://src/characters/guest.tscn")
+	for i in Global.NUM_GUESTS:
+		var guest := guest_scn.instantiate()
+		guest.scale = Vector2(10, 10)
+		guests.add_child(guest)
+		Global.new_guest_spawned.emit(guest)
 
 
 func _on_accept_button_pressed() -> void:
 	Global.guest_left_queue.emit(true)
+
 
 func _on_reject_button_pressed() -> void:
 	Global.guest_left_queue.emit(false)

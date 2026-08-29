@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_ivtyw"]
 [ext_resource type="Texture2D" uid="uid://cd4r43p408kgg" path="res://assets/px_mainscene.png" id="2_q2b63"]
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
-[ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="3_x62ka"]
 [ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="5_nxx65"]
 [ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
 
@@ -74,18 +73,6 @@ autoplay = true
 bus = &"Music"
 
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
-
-[node name="Guest" parent="Guests" unique_id=159835390 instance=ExtResource("3_x62ka")]
-position = Vector2(-510, 765)
-scale = Vector2(10, 10)
-
-[node name="Guest2" parent="Guests" unique_id=862897022 instance=ExtResource("3_x62ka")]
-position = Vector2(-323, 752)
-scale = Vector2(10, 10)
-
-[node name="Guest3" parent="Guests" unique_id=1742052639 instance=ExtResource("3_x62ka")]
-position = Vector2(-130, 742)
-scale = Vector2(10, 10)
 
 [node name="Queue" type="Node2D" parent="." unique_id=1203288871]
 script = ExtResource("6_q2b63")
