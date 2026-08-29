@@ -32,6 +32,7 @@ sprite_frames = SubResource("SpriteFrames_liimr")
 animation = &"idle"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_dgjfo")]
+visible = false
 offset_left = -47.0
 offset_top = -50.0
 offset_right = -6.0
