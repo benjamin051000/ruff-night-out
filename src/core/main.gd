@@ -26,9 +26,12 @@ func move_camera(to: Camera2D) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	intro()
+	
+func intro() -> void:
 	door.open()
 	await get_tree().create_timer(1).timeout
-	bouncer.visible = true
+	bouncer.exit_door()
 	await get_tree().create_timer(1).timeout
 	door.close()
 	move_camera(full_camera)

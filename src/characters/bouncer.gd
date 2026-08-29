@@ -20,3 +20,20 @@ func step_back() -> void:
 
 func step_forward() -> void:
 	_step_helper(true)
+
+func exit_door() -> void:
+	var old_z_index := z_index
+	var old_scale := scale
+	var old_modulate_a := modulate.a
+	
+	z_index = -9
+	modulate.a = 0
+	scale /= 1.2
+	# TODO just set modulate.a = 0 in _ready?
+	visible = true
+	
+	var tween := create_tween()
+	#tween.tween_property(self, "position:x", door_x, 0.5)
+	tween.tween_callback(func(): z_index = old_z_index)
+	tween.tween_property(self, "modulate:a", old_modulate_a, 0.5)
+	tween.parallel().tween_property(self, "scale", old_scale, 0.5)
