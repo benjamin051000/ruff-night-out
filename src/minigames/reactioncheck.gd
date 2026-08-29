@@ -2,6 +2,11 @@ extends Node2D
 
 var cellphonepic = preload("res://assets/minigame/cellphone.png")
 var bonepic = preload("res://assets/minigame/bone.png")
+var squirrel = preload("res://assets/minigame/squirrel.png")
+var money
+var laptop
+var cat
+var tennisball = preload("res://assets/minigame/tennisball.png")
 
 var guestresponse 
 var Guest 
@@ -13,7 +18,12 @@ enum responses {POSITIVE, NEGATIVE}
 
 var expectedResponse = {
 	cellphonepic = 1,
-	bonepic = 0}
+	bonepic = 0,
+	squirrel = 0,
+	money = 1,
+	laptop =1,
+	cat = 1,
+	tennisball = 0}
 
 func dog_positive(dogtype):
 	if dogtype == dogtype.REAL:
@@ -34,8 +44,6 @@ func response(guestresponse):
 		return acceptance
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
 	dogtype = Guest.dogtype
