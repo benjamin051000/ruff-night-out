@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://cth3e56lrund7"]
 
+[ext_resource type="Script" uid="uid://cis0ml2otiukc" path="res://src/minigames/reactioncheck.gd" id="1_ukbtu"]
+
 [node name="Reactioncheck" type="Node2D" unique_id=634037674]
+script = ExtResource("1_ukbtu")
