@@ -30,7 +30,3 @@ offset_bottom = 40.0
 [node name="Response2" type="TextureRect" parent="GuestResp" unique_id=1919354465]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Response3" type="TextureRect" parent="GuestResp" unique_id=977380474]
-offset_right = 40.0
-offset_bottom = 40.0

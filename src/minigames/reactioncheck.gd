@@ -9,7 +9,6 @@ var cat = preload("res://assets/minigame/cat.png")
 var tennisball = preload("res://assets/minigame/tennisball.png")
 var treat = preload("res://assets/minigame/treat.png")
 
-
 var guestresponse 
 var Guest 
 var dogtype
@@ -36,9 +35,9 @@ const bouncertext := [
 	"My thoughts exactly.",
 	"Uh huh, very interesting. Take a walk!"
 ]
-# bouncertext[1] = always at start of minigame
-# bouncertext[2] = if accept button is pressed
-# bouncertext[3] = if reject button is pressed
+# bouncertext[0] = always at start of minigame
+# bouncertext[1] = if accept button is pressed
+# bouncertext[2] = if reject button is pressed
 
 # speechbubble call logic? May need changed/signals adjusted
 # var i := 0
@@ -73,7 +72,7 @@ func get_guest_responses(items:Array) -> Array:
 	for item in items:
 		var expected = expectedResponse[item]
 
-		if dogtype == dogtype.REAL:
+		if dogtype == Guest.DogType.REAL:
 			result.append(expected)       # REALdog gives correct answer
 		else:
 			result.append(1 - expected)   # FAKEdog gives opposite answer
@@ -91,8 +90,7 @@ var actual_responses = {
 func display_guest_resp(result: Array) -> void:
 	var rects = [
 		$GuestResp/Response1,
-		$GuestResp/Response2,
-		$GuestResp/Response3
+		$GuestResp/Response2
 	]
 	for r in rects:
 		r.visible = false
@@ -112,16 +110,20 @@ func display_guest_resp(result: Array) -> void:
 
 #To Do: - make response sprites
 # - which is shown in a speech bubble above head
+func start_reaction_test(dogtype):
+	dogtype = dogtype
+	const SPEECH_BUBBLE = preload("res://src/minigames/speech_bubble.tscn")
+	var bubble = SPEECH_BUBBLE.instantiate()
+	add_child(bubble)
+
+	var items = get_random_items(3)
+
+	bubble.display(bouncertext[0])
+	assign_to_whiteboard(items)
+	guestresponse = get_guest_responses(items)
+	bubble.bubble_style = bubble.BubbleStyle.GUEST
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
 	dogtype = Guest.dogtype
 	
-	var items = get_random_items(3)
-	
-	# bouncertext[1] display in bubble
-	assign_to_whiteboard(items)
-	guestresponse = get_guest_responses(items)
-	#display guest response in speech bubble
-	
-	#end minigame and clear queue

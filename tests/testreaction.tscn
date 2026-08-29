@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dw75uxj3d002t"]
+
+[ext_resource type="Script" uid="uid://dsefeyheji1tw" path="res://tests/testreaction.gd" id="1_ee365"]
+[ext_resource type="PackedScene" uid="uid://cd0f67f7l6p3e" path="res://src/characters/guest.tscn" id="2_bdkvc"]
+[ext_resource type="PackedScene" uid="uid://cth3e56lrund7" path="res://src/minigames/reactioncheck.tscn" id="3_nuqrq"]
+
+[node name="Testreaction" type="Node2D" unique_id=746288486]
+script = ExtResource("1_ee365")
+
+[node name="Guest" parent="." unique_id=159835390 instance=ExtResource("2_bdkvc")]
+
+[node name="Reactioncheck" parent="." unique_id=634037674 instance=ExtResource("3_nuqrq")]
