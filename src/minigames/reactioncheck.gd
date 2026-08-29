@@ -11,39 +11,46 @@ var tennisball = preload("res://assets/minigame/tennisball.png")
 var guestresponse 
 var Guest 
 var dogtype
-var acceptance = true
-var rejection = false
 
-enum responses {POSITIVE, NEGATIVE}
-
+# 1 is dog negative response, 0 is dog positive response
 var expectedResponse = {
-	cellphonepic = 1,
-	bonepic = 0,
-	squirrel = 0,
-	money = 1,
-	laptop =1,
-	cat = 1,
-	tennisball = 0}
+	cellphonepic : 1,
+	bonepic : 0,
+	squirrel : 0,
+	money : 1,
+	laptop : 1,
+	cat : 1,
+	tennisball : 0}
 
-func dog_positive(dogtype):
-	if dogtype == dogtype.REAL:
-		guestresponse = 0
-	else:
-		guestresponse = 1
+func get_random_items(count:int) -> Array:
+	# creates an array of items based on the amount of cards shown
+	var keys = expectedResponse.keys()
+	keys.shuffle()
+	return keys.slice(0, count)
 
-func dog_neg(dogtype):
-	if dogtype == dogtype.REAL:
-		guestresponse = 1
-	else: 
-		guestresponse = 0
+# TO DO : - need to hold these and display images on bouncer whiteboard
+# - need to finish remaining sprites
 
-func response(guestresponse):
-	if guestresponse != expectedResponse.value:
-		return rejection
-	else:
-		return acceptance
+func get_guest_responses(items:Array) -> Array:
+	var result = []
+	# for each item, gives response based on dogtype
+	for item in items:
+		var expected = expectedResponse[item]
 
+		if dogtype == dogtype.REAL:
+			result.append(expected)       # REALdog gives correct answer
+		else:
+			result.append(1 - expected)   # FAKEdog gives opposite answer
+
+	return result
+
+#To Do: - make response sprites
+# - need to associate responses to a 
+# - second dictionary with response images for guest
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
 	dogtype = Guest.dogtype
+	
+	var items = get_random_items(3)
+	guestresponse = get_guest_responses(items)
