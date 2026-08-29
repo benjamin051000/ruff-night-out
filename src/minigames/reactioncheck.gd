@@ -1,12 +1,13 @@
 extends Node2D
 
-var cellphonepic = preload("res://assets/minigame/cellphone.png")
-var bonepic = preload("res://assets/minigame/bone.png")
+var cellphone = preload("res://assets/minigame/cellphone.png")
+var bone = preload("res://assets/minigame/bone.png")
 var squirrel = preload("res://assets/minigame/squirrel.png")
-var money
-var laptop
-var cat
+var money = preload("res://assets/minigame/money.png")
+var laptop = preload("res://assets/minigame/laptop.png")
+var cat = preload("res://assets/minigame/cat.png")
 var tennisball = preload("res://assets/minigame/tennisball.png")
+var treat = preload("res://assets/minigame/treat.png")
 
 var guestresponse 
 var Guest 
@@ -14,13 +15,14 @@ var dogtype
 
 # 1 is dog negative response, 0 is dog positive response
 var expectedResponse = {
-	cellphonepic : 1,
-	bonepic : 0,
+	cellphone : 1,
+	bone : 0,
 	squirrel : 0,
 	money : 1,
 	laptop : 1,
 	cat : 1,
-	tennisball : 0}
+	tennisball : 0,
+	treat : 0}
 
 func get_random_items(count:int) -> Array:
 	# creates an array of items based on the amount of cards shown
@@ -28,8 +30,8 @@ func get_random_items(count:int) -> Array:
 	keys.shuffle()
 	return keys.slice(0, count)
 
-# TO DO : - need to hold these and display images on bouncer whiteboard
-# - need to finish remaining sprites
+# TO DO : - need to hold these and display corresponding images on bouncer whiteboard
+
 
 func get_guest_responses(items:Array) -> Array:
 	var result = []
@@ -47,6 +49,7 @@ func get_guest_responses(items:Array) -> Array:
 #To Do: - make response sprites
 # - need to associate responses to a 
 # - second dictionary with response images for guest
+# - which also activates speech bubble above head
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
