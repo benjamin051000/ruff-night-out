@@ -9,4 +9,4 @@ signal new_guest_spawned(guest)
 signal guest_left_queue(accepted: bool)
 
 ## The total number of guests to spawn.
-const NUM_GUESTS := 5
+const NUM_GUESTS := 20

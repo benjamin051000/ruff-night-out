@@ -28,9 +28,9 @@ func _on_new_guest_spawned(guest: Guest) -> void:
 		# Find the next open one
 		var marker: Marker2D = queue_spots[queue.size()-1]
 		guest.rest_point_bottom = marker.position
-		guest.in_queue = true
 		if queue.size()-1 < light_sprite_threshold:
 			guest.sprite.play("light")
+	guest.in_queue = true
 
 
 func _on_guest_left_the_queue(accepted: bool) -> void:
@@ -44,7 +44,8 @@ func _on_guest_left_the_queue(accepted: bool) -> void:
 	queue.pop_front()
 	
 	# Goes front to back through the queue.
-	for i in queue.size():
+	# But only do it for the first 9 spots.
+	for i in min(queue_spots.size(), queue.size()):
 		var g := queue[i]
 		var new_rest_point_bottom := queue_spots[i]
 		g.rest_point_bottom = new_rest_point_bottom.position
