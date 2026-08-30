@@ -37,3 +37,6 @@ func exit_door() -> void:
 	tween.tween_callback(func(): z_index = old_z_index)
 	tween.tween_property(self, "modulate:a", old_modulate_a, 0.5)
 	tween.parallel().tween_property(self, "scale", old_scale, 0.5)
+	
+func _ready():
+	$AnimatedSprite2D.play("idle")

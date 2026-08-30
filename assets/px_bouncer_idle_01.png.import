@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvu2ahn0m8454"
-path="res://.godot/imported/px_bouncer_idle.png-2aa546ce56efcc7536d75d131908f43f.ctex"
+uid="uid://cf5wdf5o3oxdp"
+path="res://.godot/imported/px_bouncer_idle_01.png-08c117452c336795cfc831aa12c9f9ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/px_bouncer_idle.png"
-dest_files=["res://.godot/imported/px_bouncer_idle.png-2aa546ce56efcc7536d75d131908f43f.ctex"]
+source_file="res://assets/px_bouncer_idle_01.png"
+dest_files=["res://.godot/imported/px_bouncer_idle_01.png-08c117452c336795cfc831aa12c9f9ba.ctex"]
 
 [params]
 
