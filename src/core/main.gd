@@ -189,6 +189,6 @@ func on_endgame() -> void:
 	print(misses, "/", Global.NUM_GUESTS, " incorrect...")
 	var percent_miss := float(misses) / Global.NUM_GUESTS
 	if percent_miss > 1 - Global.WIN_CUTOFF:
-		$BossSpeechBubble2.on_bubble_display("You're fired!")
+		$BossSpeechBubble2.on_bubble_display("That's it, you're fired!")
 	else:
-		$BossSpeechBubble2.on_bubble_display("Nice work!")
+		$BossSpeechBubble2.on_bubble_display("Nice work! You're a good boy!")
