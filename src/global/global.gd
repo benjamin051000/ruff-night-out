@@ -11,6 +11,9 @@ signal guest_left_queue(accepted: bool)
 @warning_ignore("unused_signal")
 signal guest_ready_for_minigame(guest)
 
+@warning_ignore("unused_signal")
+signal minigame_started(name)
+
 ## The total number of guests to spawn.
 const NUM_GUESTS := 20
 

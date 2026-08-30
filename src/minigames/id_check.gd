@@ -82,6 +82,7 @@ func make_pawprint(dogtype):
 
 
 func start_minigame(dogtype):
+	Global.minigame_started.emit("idcheck")
 	visible = true
 	$Dogtype.text = Guest.DogType.keys()[dogtype]
 	$Name.text = make_name(dogtype)
@@ -90,7 +91,6 @@ func start_minigame(dogtype):
 	$Expires.text = make_expiration($DoB.text)
 	$IDnum.text = make_IDnum()
 	make_pawprint(dogtype)
-	
 	
 func cleanup():
 	visible = false
