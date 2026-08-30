@@ -43,7 +43,6 @@ func _ready() -> void:
 
 func on_bubble_display(text: String) -> void:
 	visible = true
-	print("len: ", text.length(), "/", max_width)
 	#text = text_
 	label.text = text
 	

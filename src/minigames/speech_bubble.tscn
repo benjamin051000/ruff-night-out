@@ -31,6 +31,7 @@ theme_override_fonts/font = ExtResource("3_i11ka")
 theme_override_font_sizes/font_size = 24
 text = "lorem ipsum 
 dolor"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1598112095]
