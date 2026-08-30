@@ -3,7 +3,10 @@ extends Node2D
 @onready var speech_bubble: MarginContainer = $SpeechBubble
 @export var dogtype: Global.DogType
 var rand_minigame
-var dialogue 
+var dialogue
+
+enum SpriteType {PLACEHOLDER, TARO, MARIGOLD}
+var sprite_type: SpriteType
 
 var in_queue := false
 var sent_minigame_signal := false
@@ -45,6 +48,32 @@ func enter_door() -> void:
 	tween.parallel().tween_property(self, "scale", scale/1.2, 0.5)
 	tween.tween_callback(queue_free)
 
+func set_sprite(type): 
+	match type:
+		"dark":
+			match sprite_type:
+				SpriteType.PLACEHOLDER:
+					sprite.play("dark")
+				SpriteType.TARO:
+					sprite.play("taro_dark")
+				SpriteType.MARIGOLD:
+					sprite.play("marigold_dark")
+		"light":
+			match sprite_type:
+				SpriteType.PLACEHOLDER:
+					sprite.play("light")
+				SpriteType.TARO:
+					sprite.play("taro_light")
+				SpriteType.MARIGOLD:
+					sprite.play("marigold_light")
+		"full":
+			match sprite_type:
+				SpriteType.PLACEHOLDER:
+					pass
+				SpriteType.TARO:
+					sprite.play("taro")
+				SpriteType.MARIGOLD:
+					sprite.play("marigold")
 
 func _ready() -> void:
 	if  randf() >= Global.FAKE_RATE:
@@ -52,6 +81,8 @@ func _ready() -> void:
 	else:
 		dogtype = Global.DogType.FAKE
 	sprite.play()
+	
+	sprite_type = randi_range(0, 2) as SpriteType
 	#need to talk in the speech bubble depending on dogtype
 	#dialogue = talk(dogtype)
 	#

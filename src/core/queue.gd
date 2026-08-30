@@ -30,7 +30,7 @@ func add_guest(guest: Guest) -> void:
 		var marker: Marker2D = queue_spots[queue.size()-1]
 		guest.rest_point_bottom = marker.position
 		if queue.size()-1 < light_sprite_threshold:
-			guest.sprite.play("light")
+			guest.set_sprite("light")
 	guest.in_queue = true
 
 
@@ -55,4 +55,4 @@ func remove_guest(accepted: bool) -> void:
 		var new_rest_point_bottom := queue_spots[i]
 		g.rest_point_bottom = new_rest_point_bottom.position
 		if i < light_sprite_threshold:
-			g.sprite.play("light")
+			g.set_sprite("light")

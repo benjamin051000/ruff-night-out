@@ -6,6 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://bftt5gopsjk" path="res://assets/guest/px_doginline_dark_01.png" id="3_ca1ay"]
 [ext_resource type="Texture2D" uid="uid://etu6urfak8m5" path="res://assets/guest/px_doginline_light_00.png" id="4_wvs0s"]
 [ext_resource type="Texture2D" uid="uid://ccy7nejw31hf2" path="res://assets/guest/px_doginline_light_01.png" id="5_7hjdx"]
+[ext_resource type="Texture2D" uid="uid://cd6j5cstvhofv" path="res://assets/guest/marigold/px_customdoggo01_00.png" id="6_7d36e"]
+[ext_resource type="Texture2D" uid="uid://d07qfgq4le3ht" path="res://assets/guest/taro/px_customdoggo00_00.png" id="6_a8n0b"]
+[ext_resource type="Texture2D" uid="uid://dctkksf6rlre8" path="res://assets/guest/taro/px_customdoggo00_01.png" id="7_7l53q"]
+[ext_resource type="Texture2D" uid="uid://mf3l1qkskjww" path="res://assets/guest/marigold/px_customdoggo01_01.png" id="7_luqnn"]
+[ext_resource type="Texture2D" uid="uid://bqkas343wc31n" path="res://assets/guest/marigold/px_customdoggo01dark_00.png" id="8_5hvmh"]
+[ext_resource type="Texture2D" uid="uid://g8gwl87l2j6q" path="res://assets/guest/taro/px_customdoggo00dark_00.png" id="8_763hq"]
+[ext_resource type="Texture2D" uid="uid://olhy83cx1cb2" path="res://assets/guest/taro/px_customdoggo00dark_01.png" id="9_8rniy"]
+[ext_resource type="Texture2D" uid="uid://b1axj85labqqj" path="res://assets/guest/marigold/px_customdoggo01dark_01.png" id="9_by1j1"]
+[ext_resource type="Texture2D" uid="uid://bgteqd8b6u17s" path="res://assets/guest/marigold/px_customdoggo01light_00.png" id="10_5slii"]
+[ext_resource type="Texture2D" uid="uid://d1m31wnrw4isj" path="res://assets/guest/taro/px_customdoggo00light_00.png" id="10_8gnq5"]
+[ext_resource type="Texture2D" uid="uid://dyitcpii3qfuf" path="res://assets/guest/marigold/px_customdoggo01light_01.png" id="11_81ruc"]
+[ext_resource type="Texture2D" uid="uid://dd5ymmp46f2x2" path="res://assets/guest/taro/px_customdoggo00light_01.png" id="11_kt8cf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_liimr"]
 animations = [{
@@ -30,6 +42,72 @@ animations = [{
 "loop": 1,
 "name": &"light",
 "speed": 3.88
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7d36e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_luqnn")
+}],
+"loop": 1,
+"name": &"marigold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5hvmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_by1j1")
+}],
+"loop": 1,
+"name": &"marigold_dark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5slii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_81ruc")
+}],
+"loop": 1,
+"name": &"marigold_light",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a8n0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7l53q")
+}],
+"loop": 1,
+"name": &"taro",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_763hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8rniy")
+}],
+"loop": 1,
+"name": &"taro_dark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_8gnq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kt8cf")
+}],
+"loop": 1,
+"name": &"taro_light",
+"speed": 5.0
 }]
 
 [node name="Guest" type="Node2D" unique_id=159835390]
@@ -37,7 +115,7 @@ script = ExtResource("1_0lvjc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811732360]
 sprite_frames = SubResource("SpriteFrames_liimr")
-animation = &"light"
+animation = &"marigold_light"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_rmeho")]
 visible = false
