@@ -1,7 +1,7 @@
 extends Node2D
 
 var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy", 
-	"Teddy", "Willa", "Otso", "Osho", "Tenor", "Bernie", "Cassie", "Bruno",
+	"Teddy", "Willa", "Otso", "Osha", "Tenor", "Bernie", "Cassie", "Bruno",
 	"Apple", "Utah", "Mila", "Gaga", "Zeus"]
 var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV", 
 	"King Barkthur", "Miss Sniffums", "Barry Borkbottom", 

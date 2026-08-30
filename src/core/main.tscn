@@ -199,7 +199,6 @@ offset_left = 1497.0
 offset_top = 445.0
 offset_right = 1747.0
 offset_bottom = 615.0
-max_width = 128
 bubble_style = 1
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
