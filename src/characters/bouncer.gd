@@ -36,6 +36,9 @@ func face_left() -> void:
 func face_right() -> void:
 	$AnimatedSprite2D.play("right")
 
+func idle() -> void:
+	$AnimatedSprite2D.stop()
+
 func exit_door() -> Signal:
 	var old_z_index := z_index
 	var old_scale := scale

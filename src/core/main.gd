@@ -157,10 +157,23 @@ func _on_reject_button_pressed() -> void:
 
 
 func on_endgame() -> void:
-	var percent := float(misses) / Global.NUM_GUESTS
-	print(misses, "/", Global.NUM_GUESTS, " correct...")
-	if percent > Global.WIN_CUTOFF:
-		print("you win!")
+	bouncer.idle()
+	var vol_tween := create_tween()
+	vol_tween.tween_property($BackgroundMusic, "volume_db", -80, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	await vol_tween.finished
+	$ClubLight.queue_free()
+	$ClubLight2.queue_free()
+	
+	await bouncer.step_forward()
+	bouncer.face_right()
+	door.open()
+	await boss.exit_door()
+	
+	await get_tree().create_timer(2).timeout
+	
+	print(misses, "/", Global.NUM_GUESTS, " incorrect...")
+	var percent_miss := float(misses) / Global.NUM_GUESTS
+	if percent_miss > 1 - Global.WIN_CUTOFF:
+		$BossSpeechBubble2.on_bubble_display("You're fired!")
 	else:
-		print("you lose!")
-	get_tree().quit()
+		$BossSpeechBubble2.on_bubble_display("Nice work!")

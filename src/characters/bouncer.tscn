@@ -44,7 +44,7 @@ script = ExtResource("1_usyie")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879952672]
 sprite_frames = SubResource("SpriteFrames_liimr")
-animation = &"right"
+animation = &"idle"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_dgjfo")]
 visible = false

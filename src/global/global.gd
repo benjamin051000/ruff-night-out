@@ -28,7 +28,7 @@ const NUM_GUESTS := 10
 const FAKE_RATE := 0.4
 
 ## Must get at least this % to win
-const WIN_CUTOFF := 0.5
+const WIN_CUTOFF := 0.7
 
 const music_bpm := 124.0
 const beat_interval := 60.0 / music_bpm
