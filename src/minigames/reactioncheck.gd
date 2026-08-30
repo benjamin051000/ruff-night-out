@@ -132,12 +132,16 @@ func display_guest_resp(result: Array) -> void:
 		# Assign the correct speech bubble image
 		rects[i].texture = img
 		rects[i].visible = true
+		play_reaction_sound(value)
 		await get_tree().create_timer(0.6).timeout
 		rects[i].visible = false
 		await get_tree().create_timer(0.6).timeout
 
-func play_reaction_sound() -> void:
+func play_reaction_sound(reaction) -> void:
+	if reaction == 0:
 		$PositiveReactionSound.play()
+	else:
+		$NegativeReactionSound.play()
 
 func start_minigame(dogtype):
 	Global.minigame_started.emit("reaction")
