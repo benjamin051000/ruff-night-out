@@ -18,7 +18,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"dark",
-"speed": 2.0
+"speed": 3.88
 }, {
 "frames": [{
 "duration": 1.0,
@@ -29,7 +29,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"light",
-"speed": 2.0
+"speed": 3.88
 }]
 
 [node name="Guest" type="Node2D" unique_id=159835390]
@@ -37,7 +37,7 @@ script = ExtResource("1_0lvjc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811732360]
 sprite_frames = SubResource("SpriteFrames_liimr")
-animation = &"dark"
+animation = &"light"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_rmeho")]
 visible = false

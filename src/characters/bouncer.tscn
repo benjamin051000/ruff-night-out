@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d3hwfmkk5pjnp" path="res://assets/px_bouncer_armraise.png" id="2_52k8e"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="2_dgjfo"]
 [ext_resource type="Texture2D" uid="uid://c0kheaaya140j" path="res://assets/px_bouncer_idle_00.png" id="3_g5tuw"]
-[ext_resource type="Texture2D" uid="uid://cf5wdf5o3oxdp" path="res://assets/px_bouncer_idle_01.png" id="4_3d2mu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_52k8e"]
+load_path = "res://.godot/imported/px_bouncer_idle_01.png-08c117452c336795cfc831aa12c9f9ba.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_liimr"]
 animations = [{
@@ -21,17 +23,11 @@ animations = [{
 "texture": ExtResource("3_g5tuw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_g5tuw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_g5tuw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_3d2mu")
+"texture": SubResource("CompressedTexture2D_52k8e")
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 2.1
+"speed": 3.88
 }]
 
 [node name="Bouncer" type="Node2D" unique_id=1387749208]
@@ -40,7 +36,7 @@ script = ExtResource("1_usyie")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879952672]
 sprite_frames = SubResource("SpriteFrames_liimr")
 animation = &"idle"
-frame_progress = 0.1350525
+frame_progress = 0.02285318
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_dgjfo")]
 visible = false
