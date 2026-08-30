@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cp8ahl3obc3ay"]
 
 [ext_resource type="Script" uid="uid://b6eqbq2nb0g1w" path="res://src/minigames/id_check.gd" id="1_tnl2e"]
-[ext_resource type="Texture2D" uid="uid://dorhp8v6ks42x" path="res://assets/placeholder_px_licence.png" id="2_tnl2e"]
+[ext_resource type="Texture2D" uid="uid://boiyfbm1m2a7c" path="res://src/minigames/px_licence.png" id="2_tsa83"]
 [ext_resource type="FontFile" uid="uid://clagne0k6fidx" path="res://assets/PixelEmulator-xq08.ttf" id="3_tsa83"]
 
 [node name="IdCheck" type="Node2D" unique_id=315101865]
@@ -11,7 +11,7 @@ script = ExtResource("1_tnl2e")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1859393844]
 position = Vector2(61.999992, 10.9999695)
 scale = Vector2(13.57037, 12.235293)
-texture = ExtResource("2_tnl2e")
+texture = ExtResource("2_tsa83")
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="." unique_id=1043591681]

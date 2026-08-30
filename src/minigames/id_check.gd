@@ -3,12 +3,12 @@ extends Node2D
 var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy", 
 	"Teddy", "Willa", "Otso", "Osho", "Tenor", "Bernie", "Cassie"]
 var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV", 
-	"King Barkthur", "Lady Sniffums", "Barry Borkbottom", 
+	"King Barkthur", "Miss Sniffums", "Barry Borkbottom", 
 	"Woofred Digsworth", "Bob Barker", "Bowow Boy", "Not A Cat", 
-	"Barkley Barkton", "Ima Dog"]
+	"Barkley Barkton", "Im A. Dog"]
 var street_names = ["Ray Way","Cloudy Ct","Maisy Ln","Ollie Blvd",
 		"Rini Rd","Ratface Terr","Gem Dr","Rhyme Pl"]
-var Guest 
+var Guest
 var dogtype
 
 func make_address():
@@ -39,11 +39,11 @@ var birthday_year = "20"
 
 func find_year(dogtype):
 	if dogtype == Guest.DogType.REAL:
-		birthday_year = "20" + str(randi_range(17,25))
-		# If real, from past 8 years (2017-2025)
+		birthday_year = "20" + str(randi_range(18,25))
+		# If real, from past 8 years (2018-2025)
 	else:
-		#logic for fake ages, (2000-2016)
-		var endyear = randi_range(0,16)
+		#logic for fake ages, (2000-2010)
+		var endyear = randi_range(0,10)
 		if endyear <= 9:
 			endyear = "0"+ str(endyear)
 		else:
