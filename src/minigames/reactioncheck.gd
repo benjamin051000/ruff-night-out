@@ -136,6 +136,8 @@ func display_guest_resp(result: Array) -> void:
 		rects[i].visible = false
 		await get_tree().create_timer(0.6).timeout
 
+func play_reaction_sound() -> void:
+		$PositiveReactionSound.play()
 
 func start_minigame(dogtype):
 	Global.minigame_started.emit("reaction")

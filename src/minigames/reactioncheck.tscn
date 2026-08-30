@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cis0ml2otiukc" path="res://src/minigames/reactioncheck.gd" id="1_ukbtu"]
 [ext_resource type="Texture2D" uid="uid://p0q8bmbdn3yo" path="res://assets/px_whiteboard.png" id="2_tkyjx"]
+[ext_resource type="AudioStream" uid="uid://cdwdygbx47fe4" path="res://assets/sfx/ruffnight_dognoise_panting.wav" id="3_h287y"]
+[ext_resource type="AudioStream" uid="uid://b36cjtw0fe6av" path="res://assets/sfx/ruffnight_dognoise_growl1.wav" id="4_wjbrw"]
 
 [sub_resource type="Animation" id="Animation_tkyjx"]
 length = 0.001
@@ -138,3 +140,10 @@ offset_top = 19.000004
 offset_right = 85.86
 offset_bottom = 69.0
 scale = Vector2(-0.5061773, 0.4786492)
+
+[node name="PositiveReactionSound" type="AudioStreamPlayer" parent="." unique_id=1358075971]
+stream = ExtResource("3_h287y")
+volume_db = 3.0
+
+[node name="NegativeReactionSound" type="AudioStreamPlayer" parent="." unique_id=1064156209]
+stream = ExtResource("4_wjbrw")
