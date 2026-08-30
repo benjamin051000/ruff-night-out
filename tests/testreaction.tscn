@@ -9,7 +9,13 @@
 script = ExtResource("1_ee365")
 
 [node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_nuqrq")]
+position = Vector2(1007, 731)
+scale = Vector2(10, 10)
 
 [node name="Guest" parent="." unique_id=159835390 instance=ExtResource("2_bdkvc")]
+position = Vector2(487, 799)
+scale = Vector2(10, 10)
 
 [node name="Reactioncheck" parent="." unique_id=634037674 instance=ExtResource("3_nuqrq")]
+position = Vector2(976, 305)
+scale = Vector2(10, 10)
