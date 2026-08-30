@@ -21,8 +21,9 @@ centered = false
 [node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1772560592]
 position = Vector2(15, 21)
 stream = ExtResource("3_fmg2m")
+volume_db = 3.0
 
 [node name="CloseSound" type="AudioStreamPlayer2D" parent="." unique_id=1910213945]
-position = Vector2(2, 21)
+position = Vector2(15, 21)
 stream = ExtResource("4_fmg2m")
 volume_db = 3.0

@@ -9,12 +9,24 @@
 [ext_resource type="Texture2D" uid="uid://b2ja4mad6ijdg" path="res://assets/buttons/px_buttonletin.png" id="6_2in8s"]
 [ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
 [ext_resource type="Texture2D" uid="uid://cjtaf11xmpr00" path="res://assets/buttons/px_buttonbounce.png" id="7_7o0du"]
+[ext_resource type="AudioStream" uid="uid://ci35iju1vd4w2" path="res://assets/music/Layers/ID Card (Strings) Layer.wav" id="7_2in8s"]
 [ext_resource type="PackedScene" uid="uid://cp8ahl3obc3ay" path="res://src/minigames/id_check.tscn" id="8_2uitn"]
+[ext_resource type="AudioStream" uid="uid://csnseymymraim" path="res://assets/music/Layers/Sniff-Down (Woodwinds) Layer.wav" id="8_7o0du"]
+[ext_resource type="Script" uid="uid://bu58o3j7d1ott" path="res://src/core/background_music.gd" id="9_7o0du"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6kv4h"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2wd"]
 noise = SubResource("FastNoiseLite_6kv4h")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_c43pb"]
+stream_count = 3
+stream_0/stream = ExtResource("5_nxx65")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("7_2in8s")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("8_7o0du")
+stream_2/volume = -60.0
 
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
@@ -99,9 +111,10 @@ position = Vector2(1654, 625)
 zoom = Vector2(2, 2)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=658291454]
-stream = ExtResource("5_nxx65")
+stream = SubResource("AudioStreamSynchronized_c43pb")
 autoplay = true
 bus = &"Music"
+script = ExtResource("9_7o0du")
 
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
 
