@@ -6,7 +6,7 @@ var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy",
 var fake_dog_names = ["Duke Growlsworth", "Sir Woofington IV", 
 	"King Barkthur", "Miss Sniffums", "Barry Borkbottom", 
 	"Woofred Digsworth", "Bob Barker", "Bowow Boy", "Not A. Cat", 
-	"Barkley Barkton", "Im A. Dog", "Mewsha M. Meowy"]
+	"Barkley Barkton", "Im A. Dog", "Mewsha M. Meowy", "Boof LastName"]
 var street_names = ["Ray Way","Cloudy Ct.","Maisy Ln.","Ollie Blvd.",
 		"Rini Rd.","Ratface Terr.","Gem Dr.","Rhyme Pl.", "Michael St."]
 var Guest
