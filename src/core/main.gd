@@ -32,12 +32,13 @@ func move_camera(to: Camera2D) -> void:
 
 @onready var bouncer_speech_bubble: MarginContainer = $BouncerSpeechBubble
 @onready var guest_speech_bubble: MarginContainer = $GuestSpeechBubble
+@onready var dialogue: Node2D = $Minigames/Dialogue
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.guest_ready_for_minigame.connect(_on_guest_ready_for_minigame)
-	minigames = [id_check]
+	minigames = [id_check, dialogue]
 	
 	Global.bouncer_bubble.connect(bouncer_speech_bubble.on_bubble_display)
 	Global.guest_bubble.connect(guest_speech_bubble.on_bubble_display)

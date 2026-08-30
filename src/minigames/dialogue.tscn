@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dys2od44csa38"]
+
+[ext_resource type="Script" uid="uid://rltwlglfto0u" path="res://src/minigames/dialogue.gd" id="1_0b4a1"]
+
+[node name="Dialogue" type="Node2D" unique_id=1678198411]
+script = ExtResource("1_0b4a1")

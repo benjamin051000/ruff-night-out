@@ -23,6 +23,11 @@ extends Node2D
 		#sb.queue_free()
 		#i += 1
 @onready var bouncer: Node2D = $Bouncer
+@onready var speech_bubble: MarginContainer = $SpeechBubble
 
 func _ready() -> void:
-	bouncer.speak()
+	Global.bouncer_bubble.connect(speech_bubble.on_bubble_display)
+	for i in 5:
+		print(i)
+		bouncer.speak()
+		await get_tree().create_timer(2).timeout
