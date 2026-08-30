@@ -57,17 +57,26 @@ func reveal_whiteboard_items() -> void:
 		$Whiteboard/TextureRect2,
 		$Whiteboard/TextureRect3
 	]
-	
+
 	for rect in rects:
 		rect.visible = true
 		print("revealing whiteboard item")
-		if rect.get_node("AnimationPlayer").has_animation("item_pop"):
-			$Whiteboard/TextureRect/AnimationPlayer.play("item_pop")
-			print("playing item spawn animation")
+		## animation optional
+		#var anim = rect.get_node("AnimationPlayer")
+		#if anim and anim.has_animation("item_pop"):
+			#anim.play("item_pop")
+			#print("playing item spawn animation")
 		await get_tree().create_timer(0.5).timeout
 		rect.visible = false
 		print("visible false for item")
 		print("moving to next item")
+
+
+func whiteboard_done() -> void:
+	print("Bouncer idle")
+	$"../Bouncer/AnimatedSprite2D".play("idle")
+	$Whiteboard.visible = false
+	await get_tree().create_timer(0.5).timeout
 
 
 func show_whiteboard_sequence(items:Array) -> void:
@@ -75,26 +84,26 @@ func show_whiteboard_sequence(items:Array) -> void:
 	$"../Bouncer/AnimatedSprite2D".play("arm_raise")
 	assign_to_whiteboard(items)
 	$Whiteboard.visible = true
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(1).timeout
 	await reveal_whiteboard_items()
-	print("Bouncer idle")
-	await get_tree().create_timer(0.6).timeout
-	$"../Bouncer/AnimatedSprite2D".play("idle")
-	$Whiteboard.visible = false
+	await whiteboard_done()
 	
 
-func get_guest_responses(items:Array) -> Array:
+func get_guest_responses(items:Array, dogtype) -> Array:
 	print("getting guest responses")
+	dogtype = dogtype
 	var result = []
 	# for each item, gives response based on dogtype
 	for item in items:
 		var expected = expectedResponse[item]
 
-		if dogtype == Guest.DogType.REAL:
+		if dogtype == Global.DogType.REAL:
+			print("guest:dogtype response real added to array")
 			result.append(expected)       # REALdog gives correct answer
 		else:
+			print("guest:dogtype response fake added to array")
 			result.append(1 - expected)   # FAKEdog gives opposite answer
-
+	print(result)
 	return result
 
 var like_response = preload("res://assets/minigame/heart.png")
@@ -115,10 +124,10 @@ func display_guest_resp(result: Array) -> void:
 	for r in rects:
 		r.visible = false
 
-	for i in range(result.size()):
+	for i in range(rects.size()):
 		var value = result[i]
 		# Find which image matches value
-		var img = null
+		var img 
 		for key in actual_responses.keys():
 			if actual_responses[key] == value:
 				img = key
@@ -128,23 +137,25 @@ func display_guest_resp(result: Array) -> void:
 		rects[i].visible = true
 		await get_tree().create_timer(0.5).timeout
 		rects[i].visible = false
+		await get_tree().create_timer(0.5).timeout
 
+signal hide_dialogue_bubbles
 
 func start_reaction_test(dogtype):
 	print("Running start_reaction_test")
 	$Whiteboard.visible = false
 	dogtype = dogtype
-	const SPEECH_BUBBLE = preload("res://src/minigames/speech_bubble.tscn")
-	var bubble = SPEECH_BUBBLE.instantiate()
-	add_child(bubble)
 
-	bubble.display(bouncertext[0])
-	await get_tree().create_timer(0.5).timeout
+	Global.bouncer_bubble.emit(bouncertext[0])
+	await get_tree().create_timer(1).timeout
 	var items = get_random_items(3)
-	show_whiteboard_sequence(items)
-	await get_tree().create_timer(0.5).timeout
-	guestresponse = get_guest_responses(items)
-	display_guest_resp(guestresponse)
+	
+	await show_whiteboard_sequence(items)
+	await get_tree().create_timer(1).timeout
+	
+	guestresponse = get_guest_responses(items, dogtype)
+	print(dogtype)
+	await display_guest_resp(guestresponse)
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()

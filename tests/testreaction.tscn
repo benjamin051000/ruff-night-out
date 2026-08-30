@@ -17,5 +17,5 @@ position = Vector2(487, 799)
 scale = Vector2(10, 10)
 
 [node name="Reactioncheck" parent="." unique_id=634037674 instance=ExtResource("3_nuqrq")]
-position = Vector2(976, 305)
-scale = Vector2(10, 10)
+position = Vector2(1036, 291)
+scale = Vector2(8.003769, 8.114758)
