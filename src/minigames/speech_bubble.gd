@@ -19,7 +19,7 @@ func _ready() -> void:
 	if bubble_style == BubbleStyle.GUEST:
 		$NinePatchRect.texture = preload("res://assets/px_speechbubblebig_other.png")
 		label.add_theme_color_override("font_color", Color(0, 0, 0))
-		
+
 
 #signal finished_displaying
 #

@@ -33,12 +33,9 @@ func get_random_items(count:int) -> Array:
 
 const bouncertext := [
 	"Hey, do you mind taking a look at this?",
-	"My thoughts exactly.",
-	"Uh huh, very interesting. Take a walk!"
+	"Tell me what you think about these items.",
+	"Quick question, what do you think of these?"
 ]
-# bouncertext[0] = always at start of minigame
-# bouncertext[1] = if accept button is pressed
-# bouncertext[2] = if reject button is pressed
 
 
 # function to display corresponding images on bouncer whiteboard
@@ -87,7 +84,7 @@ func show_whiteboard_sequence(items:Array) -> void:
 	await get_tree().create_timer(1).timeout
 	await reveal_whiteboard_items()
 	await whiteboard_done()
-	
+
 
 func get_guest_responses(items:Array, dogtype) -> Array:
 	print("getting guest responses")
@@ -135,29 +132,34 @@ func display_guest_resp(result: Array) -> void:
 		# Assign the correct speech bubble image
 		rects[i].texture = img
 		rects[i].visible = true
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.8).timeout
 		rects[i].visible = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.8).timeout
 
-signal hide_dialogue_bubbles
 
 func start_reaction_test(dogtype):
 	print("Running start_reaction_test")
 	$Whiteboard.visible = false
 	dogtype = dogtype
-
-	Global.bouncer_bubble.emit(bouncertext[0])
-	await get_tree().create_timer(1).timeout
+	var phrase = bouncertext.pick_random()
+	Global.bouncer_bubble.emit(phrase)
+	await get_tree().create_timer(3.0).timeout
 	var items = get_random_items(3)
 	
 	await show_whiteboard_sequence(items)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	guestresponse = get_guest_responses(items, dogtype)
 	print(dogtype)
 	await display_guest_resp(guestresponse)
+	
+#for test case which is outside of global/main script scope
+@onready var bouncer_speech_bubble: MarginContainer = $"../Bouncer/SpeechBubble"
+
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
 	dogtype = Guest.dogtype
+	Global.bouncer_bubble.connect(bouncer_speech_bubble.on_bubble_display)
+
 	
