@@ -142,7 +142,7 @@ func start_reaction_test(dogtype):
 	$Whiteboard.visible = false
 	dogtype = dogtype
 	var phrase = bouncertext.pick_random()
-	Global.bouncer_bubble.emit(phrase)
+	# Global.bouncer_bubble.emit(phrase)
 	await get_tree().create_timer(3.0).timeout
 	var items = get_random_items(3)
 	

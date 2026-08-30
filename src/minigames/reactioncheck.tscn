@@ -73,10 +73,10 @@ scale = Vector2(1.2083334, 1.1285714)
 texture = ExtResource("2_tkyjx")
 
 [node name="TextureRect" type="TextureRect" parent="Whiteboard" unique_id=64989627]
-offset_left = -9.103448
-offset_top = -12.405062
-offset_right = 4.896552
-offset_bottom = 0.5949383
+offset_left = -17.379309
+offset_top = -13.291138
+offset_right = -3.3793087
+offset_bottom = -0.2911377
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -85,19 +85,19 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_h287y")
 
 [node name="TextureRect2" type="TextureRect" parent="Whiteboard" unique_id=1960108380]
-offset_left = -10.758622
-offset_top = -11.51899
-offset_right = 2.5270948
-offset_bottom = 0.44168472
+offset_left = -19.034483
+offset_top = -13.2911415
+offset_right = -5.748766
+offset_bottom = -1.3304672
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whiteboard/TextureRect2" unique_id=633191758]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_h287y")
 
 [node name="TextureRect3" type="TextureRect" parent="Whiteboard" unique_id=1841418695]
-offset_left = -9.10345
+offset_left = -19.034483
 offset_top = -12.405061
-offset_right = 3.9965525
+offset_right = -5.9344807
 offset_bottom = -0.54040146
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whiteboard/TextureRect3" unique_id=1356919829]
