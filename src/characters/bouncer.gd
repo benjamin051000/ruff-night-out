@@ -5,12 +5,13 @@ const PIC_RESPONSE = preload("res://src/minigames/reactioncheck.tscn")
 var pic_response := PIC_RESPONSE.instantiate()
 
 var bouncer_init_phrases := [
-	"Hey, uh, I just wanted to let you know that the last guy said you smelled a bit like updog.",
-	"hello there.",
-	"hi",
-	"I am a bouncer",
+	"Can I see some ID?",
 	"bounce bounce bounce",
-	"foo"
+	"I'm gonna need to see some identification.",
+	"Identification please.",
+	"ID, please.",
+	"I'm gonna have to see some ID.",
+	"Aren't you a little young to be at the dog club?"
 ]
 
 func speak() -> void:

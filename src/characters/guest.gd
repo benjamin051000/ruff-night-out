@@ -1,9 +1,7 @@
 extends Node2D
 
-enum DogType {REAL, FAKE}
-
 @onready var speech_bubble: MarginContainer = $SpeechBubble
-@export var dogtype: DogType
+@export var dogtype: Global.DogType
 var rand_minigame
 var dialogue 
 
@@ -21,7 +19,7 @@ func talk(dogType):  #for initial greeting to bouncer
 		"RealDog greeting 3", "RealDog greeting 4", "RealDog greeting 5"]
 	const fake_speech = ["I hate pets!","NotDog greeting 2",
 		"NotDog greeting 3","NotDog greeting 4", "NotDog greeting 5"]
-	if dogType == DogType.REAL:
+	if dogType == Global.DogType.REAL:
 		return speech_bubble.display_text(real_speech.pick_random())
 	else:
 		return speech_bubble.display_text(fake_speech.pick_random())
@@ -50,9 +48,9 @@ func enter_door() -> void:
 
 func _ready() -> void:
 	if  randf() >= Global.FAKE_RATE:
-		dogtype = DogType.REAL
+		dogtype = Global.DogType.REAL
 	else:
-		dogtype = DogType.FAKE
+		dogtype = Global.DogType.FAKE
 	sprite.play()
 	#need to talk in the speech bubble depending on dogtype
 	#dialogue = talk(dogtype)

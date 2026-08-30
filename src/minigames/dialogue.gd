@@ -3,7 +3,7 @@ var dialogue := [
 	[
 		"Hey, uh, I just wanted to let you know that the last guy said you smelled a bit like updog.",
 		["What's updog?", "Exactly."],  # Real
-		["*Sniff, sniff* “No I don’t! >:(", "Then I s’pose you ain’t dog enough for this joint. Be seein’ ya."]  # Fake
+		["*Sniff, sniff* No I don’t! \n>:(", "Then I s’pose you ain’t dog enough for this joint. Be seein’ ya."]  # Fake
 	],
 	[
 		"So, what kind of music are you into?",
@@ -37,12 +37,35 @@ var dialogue := [
 	],
 ]
 
-# Called when the node enters the scene tree for the first time.
+signal hide_dialogue_bubbles
+
+const t := 3.0
+
 func _ready() -> void:
-	#Global.bouncer_bubble.emit
-	pass
+	Global.play_final_dialogue.connect(play_final_dialogue)
 
+var first: String
+var second: String
+var third: String
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start_minigame(dogtype) -> void:
+	Global.minigame_started.emit("dialogue")
+	var d = dialogue.pick_random()
+	first = d[0]
+	if dogtype == Global.DogType.REAL:
+		second = d[1][0]
+		third = d[1][1]
+	else:
+		second = d[2][0]
+		third = d[2][1]
+	
+	Global.bouncer_bubble.emit(first)
+	await get_tree().create_timer(t).timeout
+	Global.guest_bubble.emit(second)
+	await get_tree().create_timer(t).timeout
+
+func play_final_dialogue() -> void:
+	Global.bouncer_bubble.emit(third)
+
+func cleanup() -> void:
+	hide_dialogue_bubbles.emit()

@@ -44,6 +44,11 @@ func _ready() -> void:
 	Global.guest_bubble.connect(guest_speech_bubble.on_bubble_display)
 	Global.start_endgame.connect(on_endgame)
 	
+	dialogue.hide_dialogue_bubbles.connect(func(): 
+		bouncer_speech_bubble.visible = false
+		guest_speech_bubble.visible = false
+	)
+	
 	# Start the actual game
 	black_fade_in.visible = true
 	start_club_light($ClubLight)
@@ -127,13 +132,16 @@ func _on_guest_ready_for_minigame(guest: Guest) -> void:
 
 
 func _on_accept_button_pressed() -> void:
-	if dogtype == Guest.DogType.FAKE:
+	if dogtype == Global.DogType.FAKE:
 		print("you missed")
 		misses += 1
 		$NegativeButtonSound.play()
 		
-	if dogtype == Guest.DogType.REAL:
+	if dogtype == Global.DogType.REAL:
 		$PositiveButtonSound.play()
+		if minigame == dialogue:
+			Global.play_final_dialogue.emit()
+			await get_tree().create_timer(dialogue.t).timeout
 	
 	minigame.cleanup()
 	
@@ -147,13 +155,16 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_reject_button_pressed() -> void:
-	if dogtype == Guest.DogType.REAL:
+	if dogtype == Global.DogType.REAL:
 		print("you missed")
 		misses += 1
 		$NegativeButtonSound.play()
 		
-	if dogtype == Guest.DogType.FAKE:
+	if dogtype == Global.DogType.FAKE:
 		$PositiveButtonSound.play()
+		if minigame == dialogue:
+			Global.play_final_dialogue.emit()
+			await get_tree().create_timer(dialogue.t).timeout
 		
 	minigame.cleanup()
 	queue.remove_guest(false)

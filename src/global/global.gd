@@ -23,8 +23,11 @@ signal guest_bubble(text: String)
 @warning_ignore("unused_signal")
 signal start_endgame
 
+@warning_ignore("unused_signal")
+signal play_final_dialogue
+
 ## The total number of guests to spawn.
-const NUM_GUESTS := 10
+const NUM_GUESTS := 15
 const FAKE_RATE := 0.4
 
 ## Must get at least this % to win
@@ -32,3 +35,5 @@ const WIN_CUTOFF := 0.7
 
 const music_bpm := 124.0
 const beat_interval := 60.0 / music_bpm
+
+enum DogType {REAL, FAKE}

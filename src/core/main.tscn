@@ -189,10 +189,10 @@ offset_bottom = 367.0
 
 [node name="GuestSpeechBubble" parent="." unique_id=1089497789 instance=ExtResource("9_nlf45")]
 visible = false
-offset_left = 1064.0
-offset_top = 373.0
-offset_right = 1314.0
-offset_bottom = 543.0
+offset_left = 1036.0
+offset_top = 372.0
+offset_right = 1286.0
+offset_bottom = 542.0
 bubble_style = 1
 
 [node name="BossSpeechBubble" parent="." unique_id=1395073844 instance=ExtResource("9_nlf45")]
@@ -201,6 +201,7 @@ offset_left = 1497.0
 offset_top = 445.0
 offset_right = 1747.0
 offset_bottom = 615.0
+max_width = 256
 bubble_style = 1
 
 [node name="BossSpeechBubble2" parent="." unique_id=69208889 instance=ExtResource("9_nlf45")]
@@ -209,6 +210,7 @@ offset_left = 1497.0
 offset_top = 445.0
 offset_right = 1747.0
 offset_bottom = 615.0
+max_width = 256
 bubble_style = 1
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]

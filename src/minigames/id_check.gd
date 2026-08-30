@@ -39,7 +39,7 @@ func make_IDnum():
 var birthday_year = "20"
 
 func find_year(dogtype):
-	if dogtype == Guest.DogType.REAL:
+	if dogtype == Global.DogType.REAL:
 		birthday_year = "20" + str(randi_range(18,25))
 		# If real, from past 8 years (2018-2025)
 	else:
@@ -63,7 +63,7 @@ func make_age(dogtype):
 
 func make_name(dogtype):
 	var name
-	if dogtype == Guest.DogType.REAL:
+	if dogtype == Global.DogType.REAL:
 		real_dog_names.shuffle()
 		name = real_dog_names.pop_back()
 		return name
@@ -76,7 +76,7 @@ var real_paw = [preload("res://assets/minigame/dogpaw2.png"), preload("res://ass
 var fake_paw = [preload("res://assets/minigame/fakepaw.png"), preload("res://assets/minigame/catpaw.png")]
 
 func make_pawprint(dogtype):
-	if dogtype == Guest.DogType.REAL:
+	if dogtype == Global.DogType.REAL:
 		$Pawprint.texture = real_paw[randi_range(0,1)]
 	else:
 		$Pawprint.texture = fake_paw[randi_range(0,1)]
@@ -85,7 +85,7 @@ func make_pawprint(dogtype):
 func start_minigame(dogtype):
 	Global.minigame_started.emit("idcheck")
 	visible = true
-	$Dogtype.text = Guest.DogType.keys()[dogtype]
+	$Dogtype.text = Global.DogType.keys()[dogtype]
 	$Name.text = make_name(dogtype)
 	$DoB.text = make_age(dogtype)
 	$Address.text = make_address()
