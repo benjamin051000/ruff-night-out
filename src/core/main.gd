@@ -1,14 +1,15 @@
 extends Node2D
 
-## When this hits 0, game over!
-var strikes := 3
+var misses := 0
 
 const Guest = preload("uid://cub3q0665kin3")
 
 var minigames: Array
 var minigame  # randomly selected from ^^^
+var dogtype  # saved to check @ button press if you were correct
 
 @onready var black_fade_in: ColorRect = $BlackFadeIn
+@onready var boss: Node2D = $Boss
 @onready var bouncer: Node2D = $Bouncer
 @onready var door: Node2D = $Door
 @onready var queue: Node2D = $Queue
@@ -29,12 +30,18 @@ func move_camera(to: Camera2D) -> void:
 	zoom_tween.tween_property(actual_camera, "zoom", to.zoom, t).set_trans(Tween.TRANS_SINE)
 	pos_tween.tween_property(actual_camera, "position", to.position, t).set_trans(Tween.TRANS_SINE)
 
+@onready var bouncer_speech_bubble: MarginContainer = $BouncerSpeechBubble
+@onready var guest_speech_bubble: MarginContainer = $GuestSpeechBubble
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.guest_ready_for_minigame.connect(_on_guest_ready_for_minigame)
 	minigames = [id_check]
+	
+	Global.bouncer_bubble.connect(bouncer_speech_bubble.on_bubble_display)
+	Global.guest_bubble.connect(guest_speech_bubble.on_bubble_display)
+	Global.start_endgame.connect(on_endgame)
 	
 	# Start the actual game
 	black_fade_in.visible = true
@@ -44,6 +51,7 @@ func _ready() -> void:
 	await intro()
 	await get_tree().create_timer(2).timeout
 	spawn_guests()
+
 
 func start_club_light(light: Light2D) -> void:
 	var colors := [
@@ -79,12 +87,21 @@ func intro() -> void:
 	door.open()
 	await get_tree().create_timer(1).timeout
 	bouncer.exit_door()
-	bouncer.step_back()
+	await bouncer.step_forward()
+	bouncer.face_right()
 	
-	# TODO manager says "Dogs only." placeholder wait 1s
 	await get_tree().create_timer(1).timeout
+	await boss.exit_door()
 	
-	bouncer.step_forward()
+	$BossSpeechBubble.on_bubble_display("...and remember, dogs only!")
+	await get_tree().create_timer(2).timeout
+	$BossSpeechBubble.queue_free()
+	boss.enter_door()
+	bouncer.step_back()
+	#bouncer.step_back()
+	bouncer.face_left()
+	
+	#bouncer.step_forward()
 	door.close()
 	move_camera(full_camera)
 
@@ -100,12 +117,19 @@ func spawn_guests() -> void:
 
 
 func _on_guest_ready_for_minigame(guest: Guest) -> void:
+	bouncer.speak()
+	dogtype = guest.dogtype
 	minigame = minigames.pick_random()
-	minigame.start_minigame(guest.dogtype)
+	minigame.start_minigame(dogtype)
 
 
 func _on_accept_button_pressed() -> void:
+	if dogtype == Guest.DogType.FAKE:
+		print("you missed")
+		misses += 1
+	
 	minigame.cleanup()
+	
 	bouncer.step_back()
 	door.open()
 	await get_tree().create_timer(1).timeout
@@ -116,5 +140,18 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_reject_button_pressed() -> void:
+	if dogtype == Guest.DogType.REAL:
+		print("you missed")
+		misses += 1
 	minigame.cleanup()
 	queue.remove_guest(false)
+
+
+func on_endgame() -> void:
+	var percent := float(misses) / Global.NUM_GUESTS
+	print(misses, "/", Global.NUM_GUESTS, " correct...")
+	if percent > Global.WIN_CUTOFF:
+		print("you win!")
+	else:
+		print("you lose!")
+	get_tree().quit()

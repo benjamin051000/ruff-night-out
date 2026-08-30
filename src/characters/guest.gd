@@ -49,7 +49,7 @@ func enter_door() -> void:
 
 
 func _ready() -> void:
-	if  randf() >= .3: # 30% chance of guest being fake
+	if  randf() >= Global.FAKE_RATE:
 		dogtype = DogType.REAL
 	else:
 		dogtype = DogType.FAKE

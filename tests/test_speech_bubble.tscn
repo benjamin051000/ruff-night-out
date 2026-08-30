@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://br0g0x2mhhwi8"]
 
-[ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="1_j1ktu"]
 [ext_resource type="Script" uid="uid://ybmqqanm1oyn" path="res://tests/test_speech_bubble.gd" id="1_poxid"]
+[ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_poxid"]
 
 [node name="TestSpeechBubble" type="Node2D" unique_id=522892601]
 script = ExtResource("1_poxid")
 
-[node name="SpeechBubble" parent="." unique_id=690798450 instance=ExtResource("1_j1ktu")]
-offset_left = 388.0
-offset_top = 348.0
-offset_right = 498.0
-offset_bottom = 446.0
+[node name="Bouncer" parent="." unique_id=1387749208 instance=ExtResource("2_poxid")]
+position = Vector2(875.99994, 795.99994)
+scale = Vector2(10, 10)

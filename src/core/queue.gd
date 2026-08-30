@@ -44,6 +44,10 @@ func remove_guest(accepted: bool) -> void:
 		guest.rest_point_bottom.x = 1920*1.5
 	queue.pop_front()
 	
+	if queue.is_empty():
+		Global.start_endgame.emit()
+		return
+	
 	# Goes front to back through the queue.
 	# But only do it for the first 9 spots.
 	for i in min(queue_spots.size(), queue.size()):

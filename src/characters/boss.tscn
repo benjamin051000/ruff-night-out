@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dtvavsgirrgq1"]
+
+[ext_resource type="Texture2D" uid="uid://lyu0piluxnxf" path="res://assets/boss/px_manager_armdown.png" id="1_2hu0q"]
+[ext_resource type="Script" uid="uid://c4wtray5rc2qj" path="res://src/characters/boss.gd" id="1_2t6lm"]
+[ext_resource type="Texture2D" uid="uid://b67b23tsunr8r" path="res://assets/boss/px_manager_armup_00.png" id="2_2t6lm"]
+[ext_resource type="Texture2D" uid="uid://desswgs0ra322" path="res://assets/boss/px_manager_armup_01.png" id="3_h2u68"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_liimr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2hu0q")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2t6lm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h2u68")
+}],
+"loop": 1,
+"name": &"point_and_talk",
+"speed": 5.0
+}]
+
+[node name="Boss" type="Node2D" unique_id=1056754180]
+script = ExtResource("1_2t6lm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=484541343]
+sprite_frames = SubResource("SpriteFrames_liimr")
+animation = &"point_and_talk"
