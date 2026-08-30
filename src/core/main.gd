@@ -3,7 +3,10 @@ extends Node2D
 ## When this hits 0, game over!
 var strikes := 3
 
-enum Minigames {PIC_RESPONSE, ID_CHECK}
+const Guest = preload("uid://cub3q0665kin3")
+
+var minigames: Array
+var minigame  # randomly selected from ^^^
 
 @onready var black_fade_in: ColorRect = $BlackFadeIn
 @onready var bouncer: Node2D = $Bouncer
@@ -15,6 +18,8 @@ enum Minigames {PIC_RESPONSE, ID_CHECK}
 @onready var full_camera: Camera2D = $FullCamera
 @onready var actual_camera: Camera2D = $ActualCamera
 
+@onready var id_check: Node2D = $Minigames/IdCheck
+
 
 ## Move actual_camera to one of the "preset" cameras.
 func move_camera(to: Camera2D) -> void:
@@ -23,17 +28,22 @@ func move_camera(to: Camera2D) -> void:
 	var pos_tween := create_tween()
 	zoom_tween.tween_property(actual_camera, "zoom", to.zoom, t).set_trans(Tween.TRANS_SINE)
 	pos_tween.tween_property(actual_camera, "position", to.position, t).set_trans(Tween.TRANS_SINE)
-	
 
-const beat_interval := 60.0/124
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.guest_ready_for_minigame.connect(_on_guest_ready_for_minigame)
+	minigames = [id_check]
+	
+	# Start the actual game
 	black_fade_in.visible = true
 	start_club_light($ClubLight)
 	#await get_tree().create_timer(beat_interval).timeout
 	start_club_light($ClubLight2)
-	intro()
+	await intro()
+	spawn_guests()
+
 
 func start_club_light(light: Light2D) -> void:
 	var colors := [
@@ -47,8 +57,8 @@ func start_club_light(light: Light2D) -> void:
 	Color(0.2, 0.6, 1),
 	Color(1, 0.5, 0.0),
 	]
-	var flash_time := beat_interval * 0.15   # fast hit to white
-	var settle_time := beat_interval * 0.85  # slower fade to color
+	var flash_time := Global.beat_interval * 0.15   # fast hit to white
+	var settle_time := Global.beat_interval * 0.85  # slower fade to color
 
 	var tween := create_tween().set_loops()
 	for base_color in colors:
@@ -78,10 +88,10 @@ func intro() -> void:
 	await get_tree().create_timer(1).timeout
 	door.close()
 	move_camera(full_camera)
-	spawn_guests()
 
 
 func spawn_guests() -> void:
+	print("BOOM")
 	const guest_scn := preload("res://src/characters/guest.tscn")
 	for i in Global.NUM_GUESTS:
 		var guest := guest_scn.instantiate()
@@ -90,7 +100,13 @@ func spawn_guests() -> void:
 		queue.add_guest(guest)
 
 
+func _on_guest_ready_for_minigame(guest: Guest) -> void:
+	minigame = minigames.pick_random()
+	minigame.start_minigame(guest.dogtype)
+
+
 func _on_accept_button_pressed() -> void:
+	minigame.cleanup()
 	bouncer.step_back()
 	door.open()
 	await get_tree().create_timer(1).timeout
@@ -101,4 +117,5 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_reject_button_pressed() -> void:
+	minigame.cleanup()
 	queue.remove_guest(false)

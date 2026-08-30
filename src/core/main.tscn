@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://dap5gqjpnfjvt" path="res://src/core/main.gd" id="1_avv2o"]
 [ext_resource type="Texture2D" uid="uid://wk6hfti7ecom" path="res://assets/px_mainscene_backest.png" id="2_2uitn"]
 [ext_resource type="PackedScene" uid="uid://bn2xguuklwsab" path="res://src/characters/bouncer.tscn" id="2_ivtyw"]
-[ext_resource type="Texture2D" uid="uid://cd4r43p408kgg" path="res://assets/px_mainscene.png" id="2_q2b63"]
+[ext_resource type="Texture2D" uid="uid://ciwhby5tnlqxi" path="res://assets/px_mainscene_extended.png" id="3_2uitn"]
 [ext_resource type="PackedScene" uid="uid://p7vlwpp4nk2e" path="res://src/world/door.tscn" id="3_w61mg"]
 [ext_resource type="AudioStream" uid="uid://bmtha0ivaivr4" path="res://assets/music/bark dog detective edm rave music demo MDavis aug262026.wav" id="5_nxx65"]
 [ext_resource type="Script" uid="uid://mhng3y6f7jus" path="res://src/core/queue.gd" id="6_q2b63"]
+[ext_resource type="PackedScene" uid="uid://cp8ahl3obc3ay" path="res://src/minigames/id_check.tscn" id="8_2uitn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6kv4h"]
 
@@ -19,8 +20,8 @@ script = ExtResource("1_avv2o")
 [node name="BlackFadeIn" type="ColorRect" parent="." unique_id=1702087831]
 visible = false
 z_index = 100
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2250.0
+offset_bottom = 1110.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=975319224]
@@ -51,7 +52,7 @@ texture = SubResource("NoiseTexture2D_iv2wd")
 [node name="Building" type="Sprite2D" parent="." unique_id=576812507]
 z_index = -5
 scale = Vector2(10, 10)
-texture = ExtResource("2_q2b63")
+texture = ExtResource("3_2uitn")
 centered = false
 
 [node name="Door" parent="." unique_id=1938332207 instance=ExtResource("3_w61mg")]
@@ -127,6 +128,13 @@ position = Vector2(197, 880)
 
 [node name="Marker2D9" type="Marker2D" parent="Queue" unique_id=806857975]
 position = Vector2(46, 880)
+
+[node name="Minigames" type="Node" parent="." unique_id=1376919795]
+
+[node name="IdCheck" parent="Minigames" unique_id=315101865 instance=ExtResource("8_2uitn")]
+visible = false
+position = Vector2(1246, 677)
+scale = Vector2(0.35, 0.35)
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="RejectButton" to="." method="_on_reject_button_pressed"]

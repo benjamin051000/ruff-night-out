@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var real_dog_names = ["Kumo", "Taro", "Marigold", "Ollie", "Lucky", "Izzy", 
 	"Teddy", "Willa", "Otso", "Osho", "Tenor", "Bernie", "Cassie"]
@@ -79,8 +79,10 @@ func make_pawprint(dogtype):
 		$Pawprint.texture = real_paw[randi_range(0,1)]
 	else:
 		$Pawprint.texture = fake_paw[randi_range(0,1)]
-		
-func start_id_check_minigame(dogtype):
+
+
+func start_minigame(dogtype):
+	visible = true
 	$Dogtype.text = Guest.DogType.keys()[dogtype]
 	$Name.text = make_name(dogtype)
 	$DoB.text = make_age(dogtype)
@@ -90,8 +92,8 @@ func start_id_check_minigame(dogtype):
 	make_pawprint(dogtype)
 	
 	
-func check_minigame_over():
-	queue_free()
+func cleanup():
+	visible = false
 	
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()

@@ -7,4 +7,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	id_check.start_id_check_minigame(guest.dogtype)
+	for i in 3:
+		id_check.start_id_check_minigame(guest.dogtype)
+		await get_tree().create_timer(1).timeout

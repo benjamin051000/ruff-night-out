@@ -8,6 +8,9 @@ var queue_spots: Array[Node]  # Actually Array[Marker2D] but the type system can
 ## A literal Queue. idx 0 is the front of the line.
 var queue: Array[Guest]
 
+func empty() -> int:
+	return queue.size() == 0
+
 func get_current_guest() -> Guest:
 	return queue[0]
 

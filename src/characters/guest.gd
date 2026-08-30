@@ -8,6 +8,7 @@ var rand_minigame
 var dialogue 
 
 var in_queue := false
+var sent_minigame_signal := false
 
 ## Rest point, at the bottom of the sprite (their feet)
 var rest_point_bottom: Vector2
@@ -31,6 +32,10 @@ func _process(delta: float) -> void:
 	if in_queue:
 		position.y = rest_point_bottom.y - sprite_height/2.0 * scale.y
 		position.x = lerp(position.x, rest_point_bottom.x, 2*delta)
+		if abs(position.x - 1400) < 10 and not sent_minigame_signal: # TODO this is the x val of the right-most Marker2D, copied here for haste.
+			sent_minigame_signal = true
+			Global.guest_ready_for_minigame.emit(self)
+
 
 func enter_door() -> void:
 	in_queue = false
