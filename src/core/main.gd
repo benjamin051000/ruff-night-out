@@ -42,8 +42,8 @@ func _ready() -> void:
 	#await get_tree().create_timer(beat_interval).timeout
 	start_club_light($ClubLight2)
 	await intro()
+	await get_tree().create_timer(2).timeout
 	spawn_guests()
-
 
 func start_club_light(light: Light2D) -> void:
 	var colors := [
@@ -85,7 +85,6 @@ func intro() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	bouncer.step_forward()
-	await get_tree().create_timer(1).timeout
 	door.close()
 	move_camera(full_camera)
 
