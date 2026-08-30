@@ -92,7 +92,7 @@ func start_minigame(dogtype):
 	$Expires.text = make_expiration($DoB.text)
 	$IDnum.text = make_IDnum()
 	make_pawprint(dogtype)
-	
+	$BarkSound.play()
 func cleanup():
 	visible = false
 	

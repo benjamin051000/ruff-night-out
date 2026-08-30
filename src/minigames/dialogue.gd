@@ -50,14 +50,17 @@ var third: String
 
 func start_minigame(dogtype) -> void:
 	Global.minigame_started.emit("dialogue")
+	$LowerBarkSound.play()
 	var d = dialogue.pick_random()
 	first = d[0]
 	if dogtype == Global.DogType.REAL:
 		second = d[1][0]
 		third = d[1][1]
+		$HigherBarkSound.play()
 	else:
 		second = d[2][0]
 		third = d[2][1]
+	
 	
 	Global.bouncer_bubble.emit(first)
 	await get_tree().create_timer(t).timeout

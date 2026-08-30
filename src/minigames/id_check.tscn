@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6eqbq2nb0g1w" path="res://src/minigames/id_check.gd" id="1_tnl2e"]
 [ext_resource type="Texture2D" uid="uid://boiyfbm1m2a7c" path="res://src/minigames/px_licence.png" id="2_tsa83"]
 [ext_resource type="FontFile" uid="uid://clagne0k6fidx" path="res://assets/PixelEmulator-xq08.ttf" id="3_tsa83"]
+[ext_resource type="AudioStream" uid="uid://m6fv4ecnpyjk" path="res://assets/sfx/ruffnight_dognoise_lowerbark.wav" id="4_253u3"]
 
 [node name="IdCheck" type="Node2D" unique_id=315101865]
 position = Vector2(986, 541)
@@ -74,3 +75,6 @@ offset_bottom = 482.0
 [node name="Pawprint" type="Sprite2D" parent="." unique_id=411199583]
 position = Vector2(-466.0001, -37.000046)
 scale = Vector2(10, 10)
+
+[node name="BarkSound" type="AudioStreamPlayer" parent="." unique_id=786622505]
+stream = ExtResource("4_253u3")
