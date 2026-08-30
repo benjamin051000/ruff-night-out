@@ -20,7 +20,8 @@ var dogtype  # saved to check @ button press if you were correct
 @onready var actual_camera: Camera2D = $ActualCamera
 
 @onready var id_check: Node2D = $Minigames/IdCheck
-
+@onready var reaction: Node2D = $Minigames/Reaction
+@onready var dialogue: Node2D = $Minigames/Dialogue
 
 ## Move actual_camera to one of the "preset" cameras.
 func move_camera(to: Camera2D) -> void:
@@ -32,13 +33,13 @@ func move_camera(to: Camera2D) -> void:
 
 @onready var bouncer_speech_bubble: MarginContainer = $BouncerSpeechBubble
 @onready var guest_speech_bubble: MarginContainer = $GuestSpeechBubble
-@onready var dialogue: Node2D = $Minigames/Dialogue
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.guest_ready_for_minigame.connect(_on_guest_ready_for_minigame)
-	minigames = [id_check, dialogue]
+	minigames = [id_check, dialogue, reaction]
 	
 	Global.bouncer_bubble.connect(bouncer_speech_bubble.on_bubble_display)
 	Global.guest_bubble.connect(guest_speech_bubble.on_bubble_display)

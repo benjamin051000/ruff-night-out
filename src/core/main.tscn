@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dqm2cxcsnqnv0" path="res://assets/sfx/ruffnightout_ui_negative.wav" id="14_i7mjs"]
 [ext_resource type="AudioStream" uid="uid://bj4eh1hf1c7h2" path="res://assets/sfx/ruffnight_linecrowdv1.wav" id="15_j6usb"]
 [ext_resource type="PackedScene" uid="uid://dys2od44csa38" path="res://src/minigames/dialogue.tscn" id="17_i7mjs"]
+[ext_resource type="PackedScene" uid="uid://cth3e56lrund7" path="res://src/minigames/reactioncheck.tscn" id="19_pf42m"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6kv4h"]
 
@@ -179,6 +180,11 @@ scale = Vector2(0.35, 0.35)
 
 [node name="Dialogue" parent="Minigames" unique_id=1678198411 instance=ExtResource("17_i7mjs")]
 visible = false
+
+[node name="Reaction" parent="Minigames" unique_id=634037674 instance=ExtResource("19_pf42m")]
+visible = false
+position = Vector2(1580, 205)
+scale = Vector2(8, 8)
 
 [node name="BouncerSpeechBubble" parent="." unique_id=690798450 instance=ExtResource("9_nlf45")]
 visible = false
