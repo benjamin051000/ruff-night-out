@@ -127,6 +127,10 @@ func _on_accept_button_pressed() -> void:
 	if dogtype == Guest.DogType.FAKE:
 		print("you missed")
 		misses += 1
+		$NegativeButtonSound.play()
+		
+	if dogtype == Guest.DogType.REAL:
+		$PositiveButtonSound.play()
 	
 	minigame.cleanup()
 	
@@ -143,6 +147,11 @@ func _on_reject_button_pressed() -> void:
 	if dogtype == Guest.DogType.REAL:
 		print("you missed")
 		misses += 1
+		$NegativeButtonSound.play()
+		
+	if dogtype == Guest.DogType.FAKE:
+		$PositiveButtonSound.play()
+		
 	minigame.cleanup()
 	queue.remove_guest(false)
 

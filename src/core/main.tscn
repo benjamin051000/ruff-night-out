@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://csnseymymraim" path="res://assets/music/Layers/Sniff-Down (Woodwinds) Layer.wav" id="8_7o0du"]
 [ext_resource type="Script" uid="uid://bu58o3j7d1ott" path="res://src/core/background_music.gd" id="9_7o0du"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="9_nlf45"]
+[ext_resource type="AudioStream" uid="uid://bapn5iojs4440" path="res://assets/sfx/ruffnightout_ui_positive.wav" id="13_qgou3"]
+[ext_resource type="AudioStream" uid="uid://dqm2cxcsnqnv0" path="res://assets/sfx/ruffnightout_ui_negative.wav" id="14_i7mjs"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6kv4h"]
 
@@ -123,6 +125,12 @@ autoplay = true
 bus = &"Music"
 script = ExtResource("9_7o0du")
 
+[node name="PositiveButtonSound" type="AudioStreamPlayer" parent="." unique_id=895585496]
+stream = ExtResource("13_qgou3")
+
+[node name="NegativeButtonSound" type="AudioStreamPlayer" parent="." unique_id=301036829]
+stream = ExtResource("14_i7mjs")
+
 [node name="Guests" type="Node2D" parent="." unique_id=2109371517]
 
 [node name="Queue" type="Node2D" parent="." unique_id=1203288871]
@@ -168,7 +176,6 @@ offset_left = 1335.0
 offset_top = 197.0
 offset_right = 1585.0
 offset_bottom = 367.0
-max_width = 128
 
 [node name="GuestSpeechBubble" parent="." unique_id=1089497789 instance=ExtResource("9_nlf45")]
 visible = false
@@ -176,7 +183,6 @@ offset_left = 1064.0
 offset_top = 373.0
 offset_right = 1314.0
 offset_bottom = 543.0
-max_width = 128
 bubble_style = 1
 
 [node name="BossSpeechBubble" parent="." unique_id=1395073844 instance=ExtResource("9_nlf45")]
@@ -185,7 +191,6 @@ offset_left = 1497.0
 offset_top = 445.0
 offset_right = 1747.0
 offset_bottom = 615.0
-max_width = 128
 bubble_style = 1
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
