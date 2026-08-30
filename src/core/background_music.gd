@@ -7,8 +7,14 @@ func _ready() -> void:
 func _on_minigame_started(minigame_id) -> void:
 	if minigame_id == "idcheck":
 		stream.set_sync_stream_volume(1,2.5)
-	else:
+		stream.set_sync_stream_volume(2,-60)
+	
+	if minigame_id == "reaction":
+		stream.set_sync_stream_volume(2,5)
 		stream.set_sync_stream_volume(1,-60)
+	if minigame_id == "dialogue":
+		stream.set_sync_stream_volume(1,-60)
+		stream.set_sync_stream_volume(2,-60)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
