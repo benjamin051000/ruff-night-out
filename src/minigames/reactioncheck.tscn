@@ -3,23 +3,97 @@
 [ext_resource type="Script" uid="uid://cis0ml2otiukc" path="res://src/minigames/reactioncheck.gd" id="1_ukbtu"]
 [ext_resource type="Texture2D" uid="uid://p0q8bmbdn3yo" path="res://assets/px_whiteboard.png" id="2_tkyjx"]
 
+[sub_resource type="Animation" id="Animation_tkyjx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Whiteboard/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Whiteboard/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nbpvw"]
+resource_name = "item_pop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Whiteboard/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Whiteboard/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.49019608), Color(1, 1, 1, 0.98039216)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h287y"]
+_data = {
+&"RESET": SubResource("Animation_tkyjx"),
+&"item_pop": SubResource("Animation_nbpvw")
+}
+
 [node name="Reactioncheck" type="Node2D" unique_id=634037674]
 script = ExtResource("1_ukbtu")
 
 [node name="Whiteboard" type="Sprite2D" parent="." unique_id=1188756116]
+position = Vector2(94, -5.25)
+scale = Vector2(1.1666666, 1.2714286)
 texture = ExtResource("2_tkyjx")
 
 [node name="TextureRect" type="TextureRect" parent="Whiteboard" unique_id=64989627]
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Whiteboard/TextureRect" unique_id=109680389]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_h287y")
+
 [node name="TextureRect2" type="TextureRect" parent="Whiteboard" unique_id=1960108380]
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Whiteboard/TextureRect2" unique_id=633191758]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_h287y")
+
 [node name="TextureRect3" type="TextureRect" parent="Whiteboard" unique_id=1841418695]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Whiteboard/TextureRect3" unique_id=1356919829]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_h287y")
 
 [node name="GuestResp" type="Sprite2D" parent="." unique_id=143666793]
 

@@ -10,7 +10,7 @@ var tennisball = preload("res://assets/minigame/tennisball.png")
 var treat = preload("res://assets/minigame/treat.png")
 
 var guestresponse 
-var Guest 
+var Guest
 var dogtype
 
 # 1 is dog negative response, 0 is dog positive response
@@ -51,20 +51,39 @@ const bouncertext := [
 		#$SpeechBubble.display(text[i])
 		#i += 1
 		
-const bouncer_board = preload("res://assets/px_bouncer_armraise.png")
 
 # function to display corresponding images on bouncer whiteboard
 func assign_to_whiteboard(items:Array):
 	$Whiteboard/TextureRect.texture = items[0]
 	$Whiteboard/TextureRect2.texture = items[1]
 	$Whiteboard/TextureRect3.texture = items[2]
-	# bouncer sprite -> bouncer_board + whiteboard added to scene
+	$Whiteboard/TextureRect.visible = false
+	$Whiteboard/TextureRect2.visible = false
+	$Whiteboard/TextureRect3.visible = false
 
-	# trigger/timer that changes to textrect1/2/3 
-	# these display ON TOP of whiteboard 
-	# with wait time between each
+func reveal_whiteboard_items() -> void:
+	var rects = [
+		$Whiteboard/TextureRect,
+		$Whiteboard/TextureRect2,
+		$Whiteboard/TextureRect3
+	]
+
+
+	for rect in rects:
+		rect.visible = true
+		if rect.get_node("AnimationPlayer").has_animation("item_pop"):
+			$Whiteboard/TextureRect/AnimationPlayer.play("item_pop")
+		await get_tree().create_timer(0.5).timeout
+
+
+func show_whiteboard_sequence(items:Array) -> void:
+	$"../Bouncer/AnimatedSprite2D".play("arm_raise")
+	await get_tree().create_timer(0.6).timeout
+	assign_to_whiteboard(items)
+	$Whiteboard.visible = true
+	await reveal_whiteboard_items()
+	$"../Bouncer/AnimatedSprite2D".play("idle")
 	
-	# whiteboard no longer shown, bouncer spirte lowers arms
 
 func get_guest_responses(items:Array) -> Array:
 	var result = []
@@ -79,8 +98,8 @@ func get_guest_responses(items:Array) -> Array:
 
 	return result
 
-var like_response = preload("res://assets/px_speechbubble_other.png")
-var dislike_response = preload("res://assets/px_speechbubble_other.png")
+var like_response = preload("res://assets/minigame/heart.png")
+var dislike_response = preload("res://assets/minigame/redx.png")
 
 var actual_responses = {
 	like_response : 0,
@@ -108,22 +127,24 @@ func display_guest_resp(result: Array) -> void:
 		rects[i].visible = true
 		await get_tree().create_timer(0.5).timeout
 
-#To Do: - make response sprites
-# - which is shown in a speech bubble above head
+
 func start_reaction_test(dogtype):
+	$Whiteboard.visible = false
 	dogtype = dogtype
 	const SPEECH_BUBBLE = preload("res://src/minigames/speech_bubble.tscn")
 	var bubble = SPEECH_BUBBLE.instantiate()
 	add_child(bubble)
 
-	var items = get_random_items(3)
-
 	bubble.display(bouncertext[0])
-	assign_to_whiteboard(items)
+	var items = get_random_items(3)
+	show_whiteboard_sequence(items)
+
 	guestresponse = get_guest_responses(items)
 	bubble.bubble_style = bubble.BubbleStyle.GUEST
 
 func _ready() -> void:
 	Guest = preload("res://src/characters/guest.tscn").instantiate()
 	dogtype = Guest.dogtype
+	
+	
 	
