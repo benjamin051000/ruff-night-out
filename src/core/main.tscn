@@ -92,20 +92,22 @@ position = Vector2(1608, 620)
 scale = Vector2(10, 10)
 
 [node name="AcceptButton" type="Button" parent="." unique_id=781993982]
-offset_left = 1100.0
-offset_top = 903.0
-offset_right = 1300.0
-offset_bottom = 1053.0
+offset_left = 1192.0
+offset_top = 918.0
+offset_right = 1392.0
+offset_bottom = 1035.0
 icon = ExtResource("6_2in8s")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="RejectButton" type="Button" parent="." unique_id=819803084]
-offset_left = 1308.0
-offset_top = 903.0
-offset_right = 1508.0
-offset_bottom = 1053.0
+offset_left = 1408.0
+offset_top = 919.0
+offset_right = 1608.0
+offset_bottom = 1036.0
 icon = ExtResource("7_7o0du")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
@@ -219,5 +221,9 @@ offset_bottom = 615.0
 max_width = 256
 bubble_style = 1
 
+[connection signal="mouse_entered" from="AcceptButton" to="." method="_on_accept_button_mouse_entered"]
+[connection signal="mouse_exited" from="AcceptButton" to="." method="_on_accept_button_mouse_exited"]
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="mouse_entered" from="RejectButton" to="." method="_on_reject_button_mouse_entered"]
+[connection signal="mouse_exited" from="RejectButton" to="." method="_on_reject_button_mouse_exited"]
 [connection signal="pressed" from="RejectButton" to="." method="_on_reject_button_pressed"]

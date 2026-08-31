@@ -133,6 +133,9 @@ func _on_guest_ready_for_minigame(guest: Guest) -> void:
 
 
 func _on_accept_button_pressed() -> void:
+	const icon := preload("res://assets/buttons/px_buttonletin_click.png")
+	$AcceptButton.icon = icon
+	
 	if dogtype == Global.DogType.FAKE:
 		print("you missed")
 		misses += 1
@@ -156,6 +159,8 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_reject_button_pressed() -> void:
+	const icon := preload("res://assets/buttons/px_buttonbounce_click.png")
+	$RejectButton.icon = icon
 	if dogtype == Global.DogType.REAL:
 		print("you missed")
 		misses += 1
@@ -193,3 +198,22 @@ func on_endgame() -> void:
 		$BossSpeechBubble2.on_bubble_display("That's it, you're fired!")
 	else:
 		$BossSpeechBubble2.on_bubble_display("Nice work! You're a good boy!")
+
+
+func _on_accept_button_mouse_entered() -> void:
+	const icon := preload("res://assets/buttons/px_buttonletin_hover.png")
+	$AcceptButton.icon = icon
+
+func _on_accept_button_mouse_exited() -> void:
+	const icon := preload("res://assets/buttons/px_buttonletin.png")
+	$AcceptButton.icon = icon
+
+
+func _on_reject_button_mouse_entered() -> void:
+	const icon := preload("res://assets/buttons/px_buttonbounce_hover.png")
+	$RejectButton.icon = icon
+	
+
+func _on_reject_button_mouse_exited() -> void:
+	const icon := preload("res://assets/buttons/px_buttonbounce.png")
+	$RejectButton.icon = icon
