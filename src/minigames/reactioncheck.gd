@@ -154,6 +154,8 @@ func start_minigame(dogtype):
 	Global.bouncer_bubble.emit(phrase)
 	
 	await get_tree().create_timer(3.0).timeout
+	$"../../BouncerSpeechBubble".visible = false
+	
 	var items = get_random_items(3)
 	
 	await show_whiteboard_sequence(items)

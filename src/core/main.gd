@@ -150,6 +150,7 @@ func _on_accept_button_pressed() -> void:
 			Global.play_final_dialogue.emit()
 			await get_tree().create_timer(dialogue.t).timeout
 	
+	$BouncerSpeechBubble.visible = false
 	minigame.cleanup()
 	
 	bouncer.step_back()
@@ -177,6 +178,7 @@ func _on_reject_button_pressed() -> void:
 			Global.play_final_dialogue.emit()
 			await get_tree().create_timer(dialogue.t).timeout
 		
+	$BouncerSpeechBubble.visible = false
 	minigame.cleanup()
 	queue.remove_guest(false)
 
