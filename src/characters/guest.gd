@@ -5,7 +5,7 @@ extends Node2D
 var rand_minigame
 var dialogue
 
-enum SpriteType {PLACEHOLDER, TARO, MARIGOLD}
+enum SpriteType {TARO, MARIGOLD}
 var sprite_type: SpriteType
 
 var in_queue := false
@@ -51,25 +51,15 @@ func enter_door() -> void:
 func set_sprite(type): 
 	match type:
 		"dark":
-			match sprite_type:
-				SpriteType.PLACEHOLDER:
-					sprite.play("dark")
-				SpriteType.TARO:
-					sprite.play("taro_dark")
-				SpriteType.MARIGOLD:
-					sprite.play("marigold_dark")
+			sprite.play("dark")
 		"light":
 			match sprite_type:
-				SpriteType.PLACEHOLDER:
-					sprite.play("light")
 				SpriteType.TARO:
 					sprite.play("taro_light")
 				SpriteType.MARIGOLD:
 					sprite.play("marigold_light")
 		"full":
 			match sprite_type:
-				SpriteType.PLACEHOLDER:
-					pass
 				SpriteType.TARO:
 					sprite.play("taro")
 				SpriteType.MARIGOLD:
@@ -80,9 +70,9 @@ func _ready() -> void:
 		dogtype = Global.DogType.REAL
 	else:
 		dogtype = Global.DogType.FAKE
-	sprite.play()
 	
-	sprite_type = randi_range(0, 2) as SpriteType
+	sprite_type = randi_range(0, 1) as SpriteType  # TODO get enum size -_-
+	set_sprite("dark")
 	#need to talk in the speech bubble depending on dogtype
 	#dialogue = talk(dogtype)
 	#

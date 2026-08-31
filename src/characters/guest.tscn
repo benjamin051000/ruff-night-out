@@ -115,7 +115,7 @@ script = ExtResource("1_0lvjc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811732360]
 sprite_frames = SubResource("SpriteFrames_liimr")
-animation = &"marigold_light"
+animation = &"marigold_dark"
 
 [node name="SpeechBubble" parent="." unique_id=441492960 instance=ExtResource("2_rmeho")]
 visible = false
