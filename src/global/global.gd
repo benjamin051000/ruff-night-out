@@ -26,6 +26,9 @@ signal start_endgame
 @warning_ignore("unused_signal")
 signal play_final_dialogue
 
+@warning_ignore("unused_signal")
+signal set_buttons_enabled(enabled: bool)
+
 ## The total number of guests to spawn.
 const NUM_GUESTS := 15
 const FAKE_RATE := 0.4

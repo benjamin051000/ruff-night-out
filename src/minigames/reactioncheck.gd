@@ -162,6 +162,7 @@ func start_minigame(dogtype):
 	guestresponse = get_guest_responses(items, dogtype)
 	print(dogtype)
 	await display_guest_resp(guestresponse)
+	Global.set_buttons_enabled.emit(true)
 	
 
 func cleanup() -> void:

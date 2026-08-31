@@ -65,6 +65,7 @@ func start_minigame(dogtype) -> void:
 	Global.bouncer_bubble.emit(first)
 	await get_tree().create_timer(t).timeout
 	Global.guest_bubble.emit(second)
+	Global.set_buttons_enabled.emit(true)
 	await get_tree().create_timer(t).timeout
 
 func play_final_dialogue() -> void:

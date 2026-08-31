@@ -44,6 +44,7 @@ func _ready() -> void:
 	Global.bouncer_bubble.connect(bouncer_speech_bubble.on_bubble_display)
 	Global.guest_bubble.connect(guest_speech_bubble.on_bubble_display)
 	Global.start_endgame.connect(on_endgame)
+	Global.set_buttons_enabled.connect(_on_set_buttons_enabled)
 	
 	dialogue.hide_dialogue_bubbles.connect(func(): 
 		bouncer_speech_bubble.visible = false
@@ -129,10 +130,12 @@ func _on_guest_ready_for_minigame(guest: Guest) -> void:
 	bouncer.speak()
 	dogtype = guest.dogtype
 	minigame = minigames.pick_random()
+	_on_set_buttons_enabled(false)
 	minigame.start_minigame(dogtype)
 
 
 func _on_accept_button_pressed() -> void:
+	_on_set_buttons_enabled(false)
 	const icon := preload("res://assets/buttons/px_buttonletin_click.png")
 	$AcceptButton.icon = icon
 	
@@ -159,6 +162,8 @@ func _on_accept_button_pressed() -> void:
 
 
 func _on_reject_button_pressed() -> void:
+	_on_set_buttons_enabled(false)
+	
 	const icon := preload("res://assets/buttons/px_buttonbounce_click.png")
 	$RejectButton.icon = icon
 	if dogtype == Global.DogType.REAL:
@@ -217,3 +222,7 @@ func _on_reject_button_mouse_entered() -> void:
 func _on_reject_button_mouse_exited() -> void:
 	const icon := preload("res://assets/buttons/px_buttonbounce.png")
 	$RejectButton.icon = icon
+
+func _on_set_buttons_enabled(enabled: bool):
+	$AcceptButton.disabled = not enabled
+	$RejectButton.disabled = not enabled

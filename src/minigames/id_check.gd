@@ -93,6 +93,8 @@ func start_minigame(dogtype):
 	$IDnum.text = make_IDnum()
 	make_pawprint(dogtype)
 	$BarkSound.play()
+	Global.set_buttons_enabled.emit(true)
+	
 func cleanup():
 	visible = false
 	
