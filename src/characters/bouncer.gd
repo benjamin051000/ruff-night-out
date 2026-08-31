@@ -16,7 +16,7 @@ var bouncer_init_phrases := [
 
 func speak() -> void:
 	var phrase = bouncer_init_phrases.pick_random()
-	Global.bouncer_bubble.emit(phrase)
+	Global.bouncer_bubble.emit(phrase, "lower")
 
 func start_pic_response():
 	pic_response.position.y -= 100

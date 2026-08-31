@@ -101,7 +101,7 @@ func intro() -> void:
 	await get_tree().create_timer(1).timeout
 	await boss.exit_door()
 	
-	$BossSpeechBubble.on_bubble_display("...and remember, dogs only!")
+	$BossSpeechBubble.on_bubble_display("...and remember, dogs only!", "higher")
 	await get_tree().create_timer(2).timeout
 	$BossSpeechBubble.queue_free()
 	boss.enter_door()

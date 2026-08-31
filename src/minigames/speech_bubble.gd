@@ -41,10 +41,16 @@ func _ready() -> void:
 		#_:
 			#timer.start(letter_time)
 
-func on_bubble_display(text: String) -> void:
+func on_bubble_display(text: String, tone: String) -> void:
 	visible = true
 	#text = text_
 	label.text = text
+	
+	if tone == "higher":
+		$HigherBarkSound.play()
+	elif tone == "lower":
+		$LowerBarkSound.play()
+	# else crash
 	
 	# The text Label should be (relatively) unscaled
 	#label.scale = Vector2(1, 1) / scale

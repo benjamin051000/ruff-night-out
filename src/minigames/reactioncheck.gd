@@ -151,7 +151,7 @@ func start_minigame(dogtype):
 	dogtype = dogtype
 	
 	var phrase = bouncertext.pick_random()
-	Global.bouncer_bubble.emit(phrase)
+	Global.bouncer_bubble.emit(phrase, "lower")
 	
 	await get_tree().create_timer(3.0).timeout
 	$"../../BouncerSpeechBubble".visible = false

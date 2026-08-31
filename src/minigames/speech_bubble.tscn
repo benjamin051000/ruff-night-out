@@ -3,6 +3,20 @@
 [ext_resource type="Script" uid="uid://bmt8l3f6xyqy3" path="res://src/minigames/speech_bubble.gd" id="1_2fkwg"]
 [ext_resource type="Texture2D" uid="uid://cfs87g7ci5s5l" path="res://assets/px_speechbubblebig_bouncer.png" id="2_i11ka"]
 [ext_resource type="FontFile" uid="uid://clagne0k6fidx" path="res://assets/PixelEmulator-xq08.ttf" id="3_i11ka"]
+[ext_resource type="AudioStream" uid="uid://m6fv4ecnpyjk" path="res://assets/sfx/ruffnight_dognoise_lowerbark.wav" id="4_sjtxo"]
+[ext_resource type="AudioStream" uid="uid://d3abboahp6o2e" path="res://assets/sfx/ruffnight_dognoise_higherbark.wav" id="5_5vosg"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gxyuc"]
+random_pitch = 1.0594631
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("4_sjtxo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h5j6i"]
+random_pitch = 1.0594631
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("5_5vosg")
 
 [node name="SpeechBubble" type="MarginContainer" unique_id=690798450]
 offset_right = 50.0
@@ -36,5 +50,11 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1598112095]
 one_shot = true
+
+[node name="LowerBarkSound" type="AudioStreamPlayer" parent="." unique_id=1757252857]
+stream = SubResource("AudioStreamRandomizer_gxyuc")
+
+[node name="HigherBarkSound" type="AudioStreamPlayer" parent="." unique_id=1388361069]
+stream = SubResource("AudioStreamRandomizer_h5j6i")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

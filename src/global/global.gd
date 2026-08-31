@@ -16,9 +16,9 @@ signal minigame_started(name)
 
 # Speech bubbles
 @warning_ignore("unused_signal")
-signal bouncer_bubble(text: String)
+signal bouncer_bubble(text: String, tone: String)
 @warning_ignore("unused_signal")
-signal guest_bubble(text: String)
+signal guest_bubble(text: String, tone: String)
 
 @warning_ignore("unused_signal")
 signal start_endgame
