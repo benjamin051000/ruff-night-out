@@ -1,5 +1,5 @@
 extends Node2D
-var dialogue := [
+var dialogue_template := [
 	[
 		"Hey, uh, I just wanted to let you know that the last guy said you smelled a bit like updog.",
 		["What's updog?", "Exactly."],  # Real
@@ -36,21 +36,33 @@ var dialogue := [
 		["Thanks! I bought it today at the store :)", "Oh… hm…"],
 	],
 ]
+var dialogue: Array
 
 signal hide_dialogue_bubbles
 
 const t := 3.0
 
+
 func _ready() -> void:
 	Global.play_final_dialogue.connect(play_final_dialogue)
+	dialogue = dialogue_template.duplicate(true)
+	dialogue.shuffle()
 
 var first: String
 var second: String
 var third: String
 
+
 func start_minigame(dogtype) -> void:
 	Global.minigame_started.emit("dialogue")
-	var d = dialogue.pick_random()
+	
+	if dialogue.size() == 0:
+		print("out of dialogues! reshuffling...")
+		dialogue = dialogue_template.duplicate(true)
+		dialogue.shuffle()
+		
+	var d = dialogue.pop_back()
+	
 	first = d[0]
 	if dogtype == Global.DogType.REAL:
 		second = d[1][0]
