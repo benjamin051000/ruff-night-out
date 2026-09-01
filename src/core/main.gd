@@ -228,3 +228,6 @@ func _on_reject_button_mouse_exited() -> void:
 func _on_set_buttons_enabled(enabled: bool):
 	$AcceptButton.disabled = not enabled
 	$RejectButton.disabled = not enabled
+	if enabled:
+		_on_accept_button_mouse_exited()
+		_on_reject_button_mouse_exited()
