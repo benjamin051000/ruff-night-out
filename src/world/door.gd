@@ -10,7 +10,7 @@ signal door_closed
 @export var t : float = 1
 
 var music_lp_filter: AudioEffect
-@export var lp_cutoff: float = 200.0
+@export var lp_cutoff: float = 400.0
 
 ## x-val for the sprite when the door is opened
 var open_x: float
