@@ -30,7 +30,7 @@ signal play_final_dialogue
 signal set_buttons_enabled(enabled: bool)
 
 ## The total number of guests to spawn.
-const NUM_GUESTS := 15
+const NUM_GUESTS := 12
 const FAKE_RATE := 0.4
 
 ## Must get at least this % to win
