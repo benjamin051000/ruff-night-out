@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://csnseymymraim" path="res://assets/music/Layers/Sniff-Down (Woodwinds) Layer.wav" id="8_7o0du"]
 [ext_resource type="Script" uid="uid://bu58o3j7d1ott" path="res://src/core/background_music.gd" id="9_7o0du"]
 [ext_resource type="PackedScene" uid="uid://pl5mdsgdp4c4" path="res://src/minigames/speech_bubble.tscn" id="9_nlf45"]
+[ext_resource type="Script" uid="uid://b13uvidk7ryql" path="res://src/core/background_music_layers.gd" id="13_72j70"]
 [ext_resource type="AudioStream" uid="uid://bapn5iojs4440" path="res://assets/sfx/ruffnightout_ui_positive.wav" id="13_qgou3"]
 [ext_resource type="AudioStream" uid="uid://dqm2cxcsnqnv0" path="res://assets/sfx/ruffnightout_ui_negative.wav" id="14_i7mjs"]
 [ext_resource type="AudioStream" uid="uid://bj4eh1hf1c7h2" path="res://assets/sfx/ruffnight_linecrowdv1.wav" id="15_j6usb"]
@@ -26,14 +27,12 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2wd"]
 noise = SubResource("FastNoiseLite_6kv4h")
 
-[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_c43pb"]
-stream_count = 3
-stream_0/stream = ExtResource("5_nxx65")
-stream_0/volume = 0.0
-stream_1/stream = ExtResource("7_2in8s")
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1afj2"]
+stream_count = 2
+stream_0/stream = ExtResource("7_2in8s")
+stream_0/volume = -60.0
+stream_1/stream = ExtResource("8_7o0du")
 stream_1/volume = -60.0
-stream_2/stream = ExtResource("8_7o0du")
-stream_2/volume = -60.0
 
 [node name="Main" type="Node2D" unique_id=1930110823]
 script = ExtResource("1_avv2o")
@@ -127,10 +126,16 @@ position = Vector2(1654, 625)
 zoom = Vector2(2, 2)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=658291454]
-stream = SubResource("AudioStreamSynchronized_c43pb")
+stream = ExtResource("5_nxx65")
 autoplay = true
-bus = &"Music"
+bus = &"Main Music"
 script = ExtResource("9_7o0du")
+
+[node name="BackgroundMusicLayers" type="AudioStreamPlayer" parent="." unique_id=1425538083]
+stream = SubResource("AudioStreamSynchronized_1afj2")
+autoplay = true
+bus = &"Music Layers"
+script = ExtResource("13_72j70")
 
 [node name="PositiveButtonSound" type="AudioStreamPlayer" parent="." unique_id=895585496]
 stream = ExtResource("13_qgou3")

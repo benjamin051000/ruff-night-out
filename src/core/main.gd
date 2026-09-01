@@ -187,6 +187,7 @@ func on_endgame() -> void:
 	bouncer.idle()
 	var vol_tween := create_tween()
 	vol_tween.tween_property($BackgroundMusic, "volume_db", -80, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	vol_tween.tween_property($BackgroundMusicLayers, "volume_db", -80, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	vol_tween.parallel().tween_property($CrowdNoise, "volume_db", -80, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	await vol_tween.finished
 	$ClubLight.queue_free()
