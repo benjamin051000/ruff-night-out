@@ -149,31 +149,31 @@ autoplay = true
 script = ExtResource("6_q2b63")
 
 [node name="Marker2D" type="Marker2D" parent="Queue" unique_id=1228907607]
-position = Vector2(1400, 870)
+position = Vector2(1400, 865)
 
 [node name="Marker2D2" type="Marker2D" parent="Queue" unique_id=260414339]
-position = Vector2(1201, 870)
+position = Vector2(1201, 865)
 
 [node name="Marker2D3" type="Marker2D" parent="Queue" unique_id=539310691]
-position = Vector2(1005, 870)
+position = Vector2(1005, 865)
 
 [node name="Marker2D4" type="Marker2D" parent="Queue" unique_id=903587283]
-position = Vector2(806, 870)
+position = Vector2(806, 865)
 
 [node name="Marker2D5" type="Marker2D" parent="Queue" unique_id=1067779813]
-position = Vector2(619, 870)
+position = Vector2(619, 865)
 
 [node name="Marker2D6" type="Marker2D" parent="Queue" unique_id=25484722]
-position = Vector2(479, 870)
+position = Vector2(479, 865)
 
 [node name="Marker2D7" type="Marker2D" parent="Queue" unique_id=2063251484]
-position = Vector2(326, 870)
+position = Vector2(326, 865)
 
 [node name="Marker2D8" type="Marker2D" parent="Queue" unique_id=1832301719]
-position = Vector2(197, 870)
+position = Vector2(197, 865)
 
 [node name="Marker2D9" type="Marker2D" parent="Queue" unique_id=806857975]
-position = Vector2(46, 870)
+position = Vector2(46, 865)
 
 [node name="Minigames" type="Node" parent="." unique_id=1376919795]
 
